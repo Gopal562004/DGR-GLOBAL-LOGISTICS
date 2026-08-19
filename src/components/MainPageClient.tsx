@@ -13,12 +13,12 @@ import Footer from './Footer';
 import FloatingCTA from './FloatingCTA';
 import RequirementModal from './RequirementModal';
 
-export default function MainPageClient() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState(null);
+const MainPageClient: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedService, setSelectedService] = useState<string | null>(null);
 
-  const handleOpenQuoteModal = (serviceName = null) => {
-    setSelectedService(serviceName || "Air Freight Forwarding");
+  const handleOpenQuoteModal = (serviceName: string = "Air Freight Forwarding") => {
+    setSelectedService(serviceName);
     setModalOpen(true);
   };
 
@@ -70,4 +70,6 @@ export default function MainPageClient() {
       />
     </div>
   );
-}
+};
+
+export default MainPageClient;

@@ -13,14 +13,20 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/logisticsData';
 
-const Navbar = ({ onOpenQuoteModal }) => {
+interface NavbarProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Our Services", href: "#services" },
     { name: "Dangerous Goods & UN Packaging", href: "#hazmat" },
+    { name: "Mumbai Gateway", href: "#mumbai-gateway" },
     { name: "About Operations", href: "#about" },
-    { name: "Contact & Mumbai Hub", href: "#contact" }
+    { name: "FAQs", href: "#faq" },
+    { name: "Contact", href: "#contact" }
   ];
 
   return (
@@ -78,7 +84,6 @@ const Navbar = ({ onOpenQuoteModal }) => {
           
           {/* Visiting Card Logo Reproduction */}
           <a href="#" className="flex items-center gap-3">
-            {/* Dark Circle with Chevron Icon (like the visiting card) */}
             <div className="w-10 h-10 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-lg border border-slate-800 shadow-sm shrink-0">
               <span className="font-mono text-base font-extrabold">&gt;</span>
             </div>
@@ -99,7 +104,7 @@ const Navbar = ({ onOpenQuoteModal }) => {
           </a>
 
           {/* Clean Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}

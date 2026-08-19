@@ -12,12 +12,15 @@ import {
   Flame, 
   FileSpreadsheet, 
   ArrowRight,
-  MessageSquare,
-  Send
+  MessageSquare
 } from 'lucide-react';
-import { SERVICES, COMPANY_INFO } from '../data/logisticsData';
+import { SERVICES, COMPANY_INFO, ServiceItem } from '../data/logisticsData';
 
-const iconMap = {
+interface ServicesSectionProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Plane: Plane,
   Container: Container,
   FileCheck2: FileCheck2,
@@ -29,7 +32,7 @@ const iconMap = {
   FileSpreadsheet: FileSpreadsheet
 };
 
-const ServicesSection = ({ onOpenQuoteModal }) => {
+const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) => {
   return (
     <section id="services" className="py-20 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,9 +58,9 @@ const ServicesSection = ({ onOpenQuoteModal }) => {
           </p>
         </div>
 
-        {/* 9 Clean Service Cards with Photos (Matching Visiting Card) */}
+        {/* 9 Clean Service Cards with Photos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((service) => {
+          {SERVICES.map((service: ServiceItem) => {
             const IconComponent = iconMap[service.icon] || Box;
             return (
               <div

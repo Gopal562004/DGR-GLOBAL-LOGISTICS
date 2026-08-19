@@ -1,13 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, Phone, MessageSquare } from 'lucide-react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 import { COMPANY_INFO } from '../data/logisticsData';
 
-const FAQSection = () => {
-  const [openIdx, setOpenIdx] = useState(0);
+interface FAQItem {
+  q: string;
+  a: string;
+}
 
-  const faqs = [
+const FAQSection: React.FC = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+
+  const faqs: FAQItem[] = [
     {
       q: "What makes DGR Global Logistics the top freight forwarder in Mumbai?",
       a: "Our ground operations office is situated in Sahar Village, Andheri East (adjacent to Mumbai CSMIA Air Cargo Complex). This strategic location enables us to offer faster flight space allocation, immediate airport handovers, late flight cut-off clearance, and 24/7 on-site dangerous goods handling led by Operations Manager Mayur Kadam."
@@ -50,7 +55,7 @@ const FAQSection = () => {
 
         {/* FAQ Accordion List */}
         <div className="space-y-3">
-          {faqs.map((faq, idx) => {
+          {faqs.map((faq: FAQItem, idx: number) => {
             const isOpen = openIdx === idx;
             return (
               <div

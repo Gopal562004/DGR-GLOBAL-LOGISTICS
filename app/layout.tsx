@@ -1,3 +1,5 @@
+import React from 'react';
+import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
@@ -13,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-heading',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://dgrgloballogistics.com'),
   title: {
     default: 'DGR Global Logistics | Premier Freight Forwarder & DG Specialist in Mumbai, Maharashtra, India',
@@ -94,13 +96,17 @@ export const metadata = {
   },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   themeColor: '#0f172a',
   width: 'device-width',
   initialScale: 1,
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   // Comprehensive Hyper-Localized Structured Data (JSON-LD)
   const structuredData = {
     '@context': 'https://schema.org',

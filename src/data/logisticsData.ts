@@ -1,6 +1,47 @@
-// DGR Global Logistics Data & Constants
+// DGR Global Logistics TypeScript Data Models & Constants
 
-export const COMPANY_INFO = {
+export interface Address {
+  line1: string;
+  line2: string;
+  line3: string;
+  city: string;
+  pincode: string;
+  landmark: string;
+  state: string;
+}
+
+export interface CompanyInfo {
+  name: string;
+  tagline: string;
+  subTagline: string;
+  contactPerson: string;
+  role: string;
+  phone: string;
+  displayPhone: string;
+  whatsappPhone: string;
+  email: string;
+  address: Address;
+  operatingHours: string;
+  coverage: string;
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  tagline: string;
+  icon: string;
+  image: string;
+  description: string;
+  features: string[];
+}
+
+export interface HazardousClass {
+  class: string;
+  name: string;
+  desc: string;
+}
+
+export const COMPANY_INFO: CompanyInfo = {
   name: "DGR GLOBAL LOGISTICS",
   tagline: "GET WHAT YOU WANT, JUST ON TIME",
   subTagline: "International Freight Forwarding, Custom Clearance & Certified Hazardous Material Packaging",
@@ -23,7 +64,7 @@ export const COMPANY_INFO = {
   coverage: "Worldwide Air & Ocean Networks across 180+ Countries"
 };
 
-export const SERVICES = [
+export const SERVICES: ServiceItem[] = [
   {
     id: "air-freight",
     title: "Air Freight Forwarding",
@@ -152,7 +193,7 @@ export const SERVICES = [
   }
 ];
 
-export const HAZARDOUS_CLASSES = [
+export const HAZARDOUS_CLASSES: HazardousClass[] = [
   { class: "Class 1", name: "Explosives", desc: "Ammunition, flares, pyrotechnics" },
   { class: "Class 2", name: "Gases", desc: "Aerosols, compressed gases, refrigerants" },
   { class: "Class 3", name: "Flammable Liquids", desc: "Paints, solvents, alcohol, chemicals" },

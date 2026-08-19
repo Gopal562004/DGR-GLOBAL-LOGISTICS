@@ -5,22 +5,20 @@ import {
   MapPin, 
   Phone, 
   Mail, 
-  MessageSquare, 
   Send, 
   CheckCircle2, 
-  ExternalLink,
-  Clock
+  ExternalLink
 } from 'lucide-react';
-import { COMPANY_INFO, SERVICES } from '../data/logisticsData';
+import { COMPANY_INFO, SERVICES, ServiceItem } from '../data/logisticsData';
 
-const ContactSection = () => {
+const ContactSection: React.FC = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [service, setService] = useState('Air Freight Forwarding');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) {
       alert("Please enter your name and phone number.");
@@ -203,7 +201,7 @@ const ContactSection = () => {
                     onChange={(e) => setService(e.target.value)}
                     className="w-full bg-white border border-slate-300 px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500"
                   >
-                    {SERVICES.map((s) => (
+                    {SERVICES.map((s: ServiceItem) => (
                       <option key={s.id} value={s.title}>{s.title}</option>
                     ))}
                   </select>

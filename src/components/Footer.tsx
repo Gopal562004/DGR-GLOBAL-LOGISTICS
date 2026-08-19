@@ -8,9 +8,13 @@ import {
   ChevronRight, 
   ArrowUp
 } from 'lucide-react';
-import { COMPANY_INFO, SERVICES } from '../data/logisticsData';
+import { COMPANY_INFO, SERVICES, ServiceItem } from '../data/logisticsData';
 
-const Footer = ({ onOpenQuoteModal }) => {
+interface FooterProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -59,7 +63,7 @@ const Footer = ({ onOpenQuoteModal }) => {
               Our 9 Core Services
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              {SERVICES.map((s) => (
+              {SERVICES.map((s: ServiceItem) => (
                 <button
                   key={s.id}
                   onClick={() => onOpenQuoteModal(s.title)}
@@ -116,7 +120,7 @@ const Footer = ({ onOpenQuoteModal }) => {
         {/* Bottom Strip */}
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} <strong>DGR Global Logistics</strong>. All rights reserved.
+            © {new Date().getFullYear()} <strong>DGR Global Logistics</strong>. All rights reserved. Mumbai, India.
           </div>
 
           <div className="flex items-center gap-4">

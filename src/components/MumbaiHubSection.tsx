@@ -3,11 +3,6 @@
 import React from 'react';
 import { 
   MapPin, 
-  Plane, 
-  Container, 
-  Truck, 
-  Clock, 
-  Building2, 
   CheckCircle2, 
   ArrowRight,
   Phone,
@@ -15,8 +10,20 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/logisticsData';
 
-const MumbaiHubSection = ({ onOpenQuoteModal }) => {
-  const hubs = [
+interface MumbaiHubSectionProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+interface HubItem {
+  title: string;
+  location: string;
+  distance: string;
+  desc: string;
+  tag: string;
+}
+
+const MumbaiHubSection: React.FC<MumbaiHubSectionProps> = ({ onOpenQuoteModal }) => {
+  const hubs: HubItem[] = [
     {
       title: "Sahar Air Cargo Complex (CSMIA - BOM)",
       location: "Sahar Village, Andheri East, Mumbai 400099",
@@ -60,7 +67,7 @@ const MumbaiHubSection = ({ onOpenQuoteModal }) => {
 
         {/* 3 Gateway Cards with Photos & Map Details */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {hubs.map((hub, idx) => (
+          {hubs.map((hub: HubItem, idx: number) => (
             <div
               key={idx}
               className="bg-white border border-slate-200 hover:border-slate-800 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-all group"
@@ -92,7 +99,7 @@ const MumbaiHubSection = ({ onOpenQuoteModal }) => {
               <div className="pt-4 mt-6 border-t border-slate-100 flex items-center justify-between">
                 <button
                   onClick={() => onOpenQuoteModal(`${hub.title} Inquiry`)}
-                  className="text-xs font-bold text-slate-900 hover:text-amber-600 uppercase flex items-center gap-1"
+                  className="text-xs font-bold text-slate-950 hover:text-amber-600 uppercase flex items-center gap-1"
                 >
                   <span>Book Hub Pickup</span>
                   <ArrowRight className="w-3.5 h-3.5" />

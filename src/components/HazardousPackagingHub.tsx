@@ -5,15 +5,16 @@ import {
   ShieldAlert, 
   Box, 
   Flame, 
-  CheckCircle2, 
   FileSpreadsheet, 
-  MessageSquare, 
-  Send,
-  Layers
+  MessageSquare
 } from 'lucide-react';
-import { HAZARDOUS_CLASSES, COMPANY_INFO } from '../data/logisticsData';
+import { HAZARDOUS_CLASSES, COMPANY_INFO, HazardousClass } from '../data/logisticsData';
 
-const HazardousPackagingHub = ({ onOpenQuoteModal }) => {
+interface HazardousPackagingHubProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+const HazardousPackagingHub: React.FC<HazardousPackagingHubProps> = ({ onOpenQuoteModal }) => {
   return (
     <section id="hazmat" className="py-20 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +41,7 @@ const HazardousPackagingHub = ({ onOpenQuoteModal }) => {
             <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
               <img
                 src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=600&q=80"
-                alt="UN Tested Boxes"
+                alt="UN Tested Boxes Mumbai"
                 className="w-full h-44 object-cover"
               />
               <div className="p-3 bg-white">
@@ -52,7 +53,7 @@ const HazardousPackagingHub = ({ onOpenQuoteModal }) => {
             <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
               <img
                 src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80"
-                alt="Hazardous Warning Labels"
+                alt="Hazardous Warning Labels Mumbai"
                 className="w-full h-44 object-cover"
               />
               <div className="p-3 bg-white">
@@ -64,7 +65,7 @@ const HazardousPackagingHub = ({ onOpenQuoteModal }) => {
             <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
               <img
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80"
-                alt="DG Material Packaging"
+                alt="DG Material Packaging Mumbai"
                 className="w-full h-44 object-cover"
               />
               <div className="p-3 bg-white">
@@ -76,7 +77,7 @@ const HazardousPackagingHub = ({ onOpenQuoteModal }) => {
             <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
               <img
                 src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
-                alt="Shippers Declaration Documentation"
+                alt="Shippers Declaration Documentation Mumbai"
                 className="w-full h-44 object-cover"
               />
               <div className="p-3 bg-white">
@@ -154,7 +155,7 @@ const HazardousPackagingHub = ({ onOpenQuoteModal }) => {
             Covering All 9 Hazardous Classes (IATA & IMDG):
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-            {HAZARDOUS_CLASSES.map((cls, idx) => (
+            {HAZARDOUS_CLASSES.map((cls: HazardousClass, idx: number) => (
               <div key={idx} className="bg-white border border-slate-200 p-2 text-center text-xs">
                 <div className="font-bold text-slate-950">{cls.class}</div>
                 <div className="text-[10px] text-slate-500 truncate">{cls.name}</div>

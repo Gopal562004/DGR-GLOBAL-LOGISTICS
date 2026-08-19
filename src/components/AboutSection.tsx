@@ -6,15 +6,16 @@ import {
   Phone, 
   Mail, 
   Clock, 
-  Award, 
   ShieldCheck, 
-  Building2, 
-  ArrowRight,
   MessageSquare
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/logisticsData';
 
-const AboutSection = ({ onOpenQuoteModal }) => {
+interface AboutSectionProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) => {
   return (
     <section id="about" className="py-20 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +63,7 @@ const AboutSection = ({ onOpenQuoteModal }) => {
                 "{COMPANY_INFO.tagline}"
               </div>
 
-              {/* Contact Details List (Golden Icons matching Card) */}
+              {/* Contact Details List */}
               <div className="space-y-3 text-xs text-slate-700">
                 <div className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">

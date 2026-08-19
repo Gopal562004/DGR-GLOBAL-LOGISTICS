@@ -3,23 +3,21 @@
 import React from 'react';
 import { 
   ArrowRight, 
-  Phone, 
   MessageSquare, 
-  MapPin, 
-  CheckCircle2, 
   Plane, 
   Container, 
-  ShieldAlert, 
-  Box,
-  ChevronRight
+  Box
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/logisticsData';
 
-const Hero = ({ onOpenQuoteModal }) => {
+interface HeroProps {
+  onOpenQuoteModal: (serviceName?: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
   return (
     <section className="relative bg-white text-slate-900 overflow-hidden border-b border-slate-200">
       
-      {/* Decorative Light Background Elements */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 lg:pt-16 lg:pb-24">
         
         {/* Top Visiting Card Badge */}
@@ -55,7 +53,7 @@ const Hero = ({ onOpenQuoteModal }) => {
               Your dependable partner for worldwide Air & Ocean Freight Forwarding, Custom Clearance (CHA), and certified Dangerous Goods (DGR) Packaging & UN Approved Boxes in Mumbai.
             </p>
 
-            {/* Quick Feature Pillars (Light, Uncluttered) */}
+            {/* Quick Feature Pillars */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
               <div className="bg-slate-50 border border-slate-200 p-3.5">
                 <div className="text-slate-950 font-bold text-xs uppercase flex items-center gap-1.5">
@@ -116,11 +114,10 @@ const Hero = ({ onOpenQuoteModal }) => {
             <div className="relative bg-white border-2 border-slate-300 shadow-lg overflow-hidden group">
               <img
                 src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=1000&q=80"
-                alt="Air Freight Cargo Aircraft"
+                alt="Air Freight Cargo Aircraft Mumbai"
                 className="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               
-              {/* Overlay Badge */}
               <div className="absolute bottom-0 inset-x-0 bg-slate-900/90 text-white p-4 backdrop-blur-xs border-t border-amber-500 flex items-center justify-between">
                 <div>
                   <div className="text-xs font-bold font-heading text-amber-400 uppercase">
@@ -141,7 +138,7 @@ const Hero = ({ onOpenQuoteModal }) => {
               <div className="relative bg-white border border-slate-300 overflow-hidden group">
                 <img
                   src="https://images.unsplash.com/photo-1559297434-fae8a1916a79?auto=format&fit=crop&w=600&q=80"
-                  alt="Ocean Freight Vessel"
+                  alt="Ocean Freight Vessel Nhava Sheva"
                   className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-slate-900/80 text-white px-2.5 py-1 text-[10px] font-bold uppercase truncate">
@@ -152,7 +149,7 @@ const Hero = ({ onOpenQuoteModal }) => {
               <div className="relative bg-white border border-slate-300 overflow-hidden group">
                 <img
                   src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=600&q=80"
-                  alt="UN Approved Boxes & Packaging"
+                  alt="UN Approved Boxes & Packaging Mumbai"
                   className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-slate-900/80 text-white px-2.5 py-1 text-[10px] font-bold uppercase truncate text-amber-400">

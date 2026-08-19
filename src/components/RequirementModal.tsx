@@ -1,22 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
-import { X, MessageSquare, Phone, Mail, CheckCircle2, Send } from 'lucide-react';
-import { COMPANY_INFO, SERVICES } from '../data/logisticsData';
+import React, { useState, useEffect } from 'react';
+import { X, MessageSquare, Mail, CheckCircle2 } from 'lucide-react';
+import { COMPANY_INFO, SERVICES, ServiceItem } from '../data/logisticsData';
 
-const RequirementModal = ({ isOpen, onClose, initialService = null }) => {
-  const [service, setService] = useState(initialService || "Air Freight Forwarding");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [company, setCompany] = useState("");
-  const [origin, setOrigin] = useState("Mumbai");
-  const [destination, setDestination] = useState("");
-  const [weight, setWeight] = useState("");
-  const [isDG, setIsDG] = useState(false);
-  const [notes, setNotes] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+interface RequirementModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  initialService?: string | null;
+}
 
-  React.useEffect(() => {
+const RequirementModal: React.FC<RequirementModalProps> = ({ isOpen, onClose, initialService = null }) => {
+  const [service, setService] = useState<string>(initialService || "Air Freight Forwarding");
+  const [name, setName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [origin, setOrigin] = useState<string>("Mumbai");
+  const [destination, setDestination] = useState<string>("");
+  const [weight, setWeight] = useState<string>("");
+  const [isDG, setIsDG] = useState<boolean>(false);
+  const [notes, setNotes] = useState<string>("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
+  useEffect(() => {
     if (initialService) {
       setService(initialService);
     }
@@ -28,7 +33,6 @@ const RequirementModal = ({ isOpen, onClose, initialService = null }) => {
     return `*INQUIRY / RATE QUOTE - DGR GLOBAL LOGISTICS*
 ----------------------------------------
 *Client:* ${name || 'N/A'}
-*Company:* ${company || 'Individual / Shipper'}
 *Phone:* ${phone || 'N/A'}
 ----------------------------------------
 *Service:* ${service}
@@ -40,7 +44,7 @@ const RequirementModal = ({ isOpen, onClose, initialService = null }) => {
 *Direct Operations Lead: Mayur Kadam (+91 9028345261)*`;
   };
 
-  const handleWhatsApp = (e) => {
+  const handleWhatsApp = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!name || !phone) {
       alert("Please provide your name and phone number.");
@@ -50,7 +54,7 @@ const RequirementModal = ({ isOpen, onClose, initialService = null }) => {
     setSubmitted(true);
   };
 
-  const handleEmail = (e) => {
+  const handleEmail = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!name || !phone) {
       alert("Please provide your name and phone number.");
@@ -115,7 +119,7 @@ const RequirementModal = ({ isOpen, onClose, initialService = null }) => {
                 onChange={(e) => setService(e.target.value)}
                 className="w-full bg-slate-50 border border-slate-300 px-3 py-2 text-xs focus:outline-none focus:border-amber-500"
               >
-                {SERVICES.map((s) => (
+                {SERVICES.map((s: ServiceItem) => (
                   <option key={s.id} value={s.title}>{s.title}</option>
                 ))}
               </select>
