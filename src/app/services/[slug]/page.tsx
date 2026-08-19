@@ -20,6 +20,7 @@ import { SERVICES, COMPANY_INFO, ServiceItem } from '@/data/logisticsData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
+import ServiceDetailClient from '@/components/ServiceDetailClient';
 
 interface PageProps {
   params: Promise<{
@@ -269,24 +270,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     Need instant rates, flight space, or customs clearance for <strong>{service.title}</strong>? Contact our Mumbai airport desk directly.
                   </p>
 
-                  <div className="space-y-2 pt-2">
-                    <a
-                      href={`https://wa.me/${COMPANY_INFO.whatsappPhone}?text=${encodeURIComponent(`Hello Mayur, I need a rate quote for ${service.title}.`)}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase py-3 px-4 flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <MessageSquare className="w-4 h-4" />
-                      <span>WhatsApp {COMPANY_INFO.phone}</span>
-                    </a>
-
-                    <a
-                      href={`tel:${COMPANY_INFO.phone}`}
-                      className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase py-3 px-4 flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <Phone className="w-4 h-4" />
-                      <span>Call {COMPANY_INFO.phone}</span>
-                    </a>
+                  <div className="pt-2">
+                    <ServiceDetailClient service={service} />
                   </div>
 
                   <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-400 space-y-1">
