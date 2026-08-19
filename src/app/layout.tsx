@@ -4,7 +4,6 @@ import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
-
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   display: 'swap',
@@ -109,7 +108,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Comprehensive Hyper-Localized Structured Data (JSON-LD)
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
