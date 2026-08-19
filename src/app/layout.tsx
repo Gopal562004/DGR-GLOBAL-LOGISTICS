@@ -56,6 +56,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: 'DGR Global Logistics | Top Freight & Dangerous Goods Specialist in Mumbai, India',
     description: 'Leading International Freight Forwarding, Custom Clearance & Certified UN Hazardous Packaging based at Sahar Village, Andheri East, Mumbai, Maharashtra 400099.',
