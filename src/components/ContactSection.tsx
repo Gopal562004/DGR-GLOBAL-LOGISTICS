@@ -121,7 +121,7 @@ const ContactSection: React.FC = () => {
               {/* Google Maps Button */}
               <div className="pt-2">
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("7/1 Creado House, Sutar pakhadi Near Sai Hanuman Mandir, Sahar Village Andheri East Mumbai 400099")}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Rj Villa, Sutar Pakhadi Near Khushi Wine Shop, Sahar Cargo Complex, Mumbai 400099")}`}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold text-xs uppercase py-3 px-4 border border-slate-300 flex items-center justify-center gap-2 transition-colors"

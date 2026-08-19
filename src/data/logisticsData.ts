@@ -78,12 +78,12 @@ export const COMPANY_INFO: CompanyInfo = {
   whatsappPhone: "919028345261",
   email: "dgr.export.logistics@gmail.com",
   address: {
-    line1: "7/1 Creado House Ground Floor",
-    line2: "Sutar pakhadi Near Sai Hanuman Mandir",
-    line3: "Sahar Village, Andheri East",
+    line1: "Rj Villa, Sutar Pakhadi",
+    line2: "Near Khushi Wine Shop",
+    line3: "Sahar Cargo Complex, Andheri East",
     city: "Mumbai",
     pincode: "400099",
-    landmark: "Near Mumbai International Airport Cargo Terminal",
+    landmark: "Near Khushi Wine Shop, Sahar Cargo Complex",
     state: "Maharashtra, India"
   },
   operatingHours: "24/7 Operations & Air Cargo Desk",

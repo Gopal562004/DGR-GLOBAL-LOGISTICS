@@ -2,7 +2,7 @@
 
 > **"GET WHAT YOU WANT, JUST ON TIME"**
 
-Modern, high-converting web portal for **DGR Global Logistics** — specializing in International Air & Ocean Freight Forwarding, Custom House Agent (CHA) Clearance, Certified Dangerous Goods (DGR) Packaging, UN Approved Drums & Boxes, and Hazardous Warning Labels in Mumbai, India.
+Modern, high-converting web portal for **DGR Global Logistics** — specializing in International Air & Ocean Freight Forwarding, Custom House Agent (CHA) Clearance, Certified Dangerous Goods (DGR) Packaging, UN Approved Drums & Boxes, and Hazardous Warning Labels in Mumbai, Maharashtra, India.
 
 ---
 
@@ -11,11 +11,11 @@ Modern, high-converting web portal for **DGR Global Logistics** — specializing
 - **Tagline**: GET WHAT YOU WANT, JUST ON TIME
 - **Operations & Sales Lead**: Mayur Kadam (`+91 9028345261`)
 - **Official Email**: `dgr.export.logistics@gmail.com`
-- **Location**: 7/1 Creado House Ground Floor, Sutar pakhadi Near Sai Hanuman Mandir, Sahar Village, Andheri East, Mumbai 400099 (*Adjacent to Mumbai International Airport CSMIA Air Cargo Complex*)
+- **Location**: Rj Villa, Sutar Pakhadi, Near Khushi Wine Shop, Sahar Cargo Complex, Andheri East, Mumbai 400099 (*Adjacent to Mumbai International Airport CSMIA Air Cargo Complex*)
 
 ---
 
-## ✈️ Core Services
+## ✈️ Core Services (Dedicated Pages)
 
 1. **Air Freight Forwarding**: Priority and scheduled worldwide air cargo with guaranteed space allocation.
 2. **Import & Console (Air & Sea)**: LCL & FCL consolidation across major international trade lanes.
@@ -31,17 +31,19 @@ Modern, high-converting web portal for **DGR Global Logistics** — specializing
 
 ## 🛠️ Tech Stack
 
-- **React 19** + **Vite**
-- **Tailwind CSS v4** (Zero-config with `@tailwindcss/vite`)
+- **Next.js 16** (App Router, Server Components & Dynamic SSG)
+- **TypeScript** (Strict Type Safety)
+- **Tailwind CSS v4** (`@tailwindcss/postcss`)
+- **Vercel Analytics** (`@vercel/analytics`)
 - **Lucide React** (Logistics & Industrial Icons)
-- **Google Fonts** (Plus Jakarta Sans & Space Grotesk)
+- **Google Fonts** (Plus Jakarta Sans & Space Grotesk via `next/font/google`)
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18+)
+- Node.js (v18.18+)
 - npm
 
 ### Installation & Run Locally
@@ -57,9 +59,7 @@ npm install
 
 # 4. Start the development server
 npm run dev
-```
 
-### Production Build
-```bash
+# 5. Production build
 npm run build
 ```

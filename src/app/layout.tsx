@@ -125,7 +125,7 @@ export default function RootLayout({
         image: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=1200&q=80',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: '7/1 Creado House Ground Floor, Sutar pakhadi Near Sai Hanuman Mandir, Sahar Village, Andheri East',
+          streetAddress: 'Rj Villa, Sutar Pakhadi Near Khushi Wine Shop, Sahar Cargo Complex, Andheri East',
           addressLocality: 'Mumbai',
           addressRegion: 'Maharashtra',
           postalCode: '400099',
