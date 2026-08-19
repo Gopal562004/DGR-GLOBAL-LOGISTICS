@@ -16,27 +16,31 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata = {
   metadataBase: new URL('https://dgrgloballogistics.com'),
   title: {
-    default: 'DGR Global Logistics | What You Want, Just On Time | Mumbai',
-    template: '%s | DGR Global Logistics',
+    default: 'DGR Global Logistics | Premier Freight Forwarder & DG Specialist in Mumbai, Maharashtra, India',
+    template: '%s | DGR Global Logistics Mumbai',
   },
-  description: 'DGR Global Logistics is Mumbai’s premier international freight forwarder and certified Dangerous Goods (DGR) packaging specialist. Air & Ocean Freight, Customs Clearance (CHA), UN 4G/4GV Certified Boxes & Drums, and IATA Hazard Labels.',
+  description: 'Top Freight Forwarder in Mumbai & Maharashtra. Specialized in Sahar Air Cargo Complex logistics, Nhava Sheva (JNPT) custom clearance (CHA), UN approved 4G/4GV boxes & drums, and certified IATA Dangerous Goods packaging in Mumbai 400099.',
   keywords: [
-    'DGR Global Logistics',
+    'Freight Forwarder in Mumbai',
+    'Best Logistics Company in Mumbai',
+    'Air Freight Forwarding Mumbai Sahar',
     'Dangerous Goods Logistics Mumbai',
-    'Air Freight Forwarding Mumbai',
-    'Sahar Air Cargo Forwarder',
-    'Custom Clearance Mumbai CHA',
-    'UN Approved 4G Boxes Supplier',
-    'UN 4GV Certified Fiberboard Box',
-    'UN Approved Drums Mumbai',
-    'Hazardous Material Packaging',
-    'IATA Dangerous Goods Labels Supplier',
-    'Dry Ice Packaging Logistics',
-    'Lithium Battery Packaging Mumbai',
-    'Import Export Console Air Sea',
-    'International Courier Services Mumbai',
-    'Mayur Kadam DGR Logistics',
-    'Shippers Declaration for DG Documentation'
+    'Custom Clearance Agent Mumbai CHA',
+    'Custom House Agent Nhava Sheva JNPT',
+    'UN Approved 4G Boxes Supplier Mumbai',
+    'UN 4GV Certified Packaging Maharashtra',
+    'UN Steel Drums Supplier Mumbai',
+    'Hazardous Material Packaging Mumbai India',
+    'IATA Dangerous Goods Labels Mumbai',
+    'Dry Ice Packaging Logistics Mumbai',
+    'Lithium Battery Packaging Mumbai Airport',
+    'Import Export Console Mumbai',
+    'International Courier Andheri East Mumbai',
+    'Logistics Company near Mumbai International Airport',
+    'Mayur Kadam DGR Logistics Mumbai',
+    'Shippers Declaration DG Documentation Maharashtra',
+    'Air Cargo Forwarder Sahar Village Andheri East',
+    'Freight Forwarding Company in Maharashtra India'
   ],
   authors: [{ name: 'Mayur Kadam', url: 'https://dgrgloballogistics.com' }],
   creator: 'DGR Global Logistics',
@@ -50,8 +54,8 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'DGR Global Logistics | What You Want, Just On Time',
-    description: 'International Freight Forwarding, Custom Clearance & Certified Hazardous Material Packaging in Sahar Village, Andheri East, Mumbai.',
+    title: 'DGR Global Logistics | Top Freight & Dangerous Goods Specialist in Mumbai, India',
+    description: 'Leading International Freight Forwarding, Custom Clearance & Certified UN Hazardous Packaging based at Sahar Village, Andheri East, Mumbai, Maharashtra 400099.',
     url: 'https://dgrgloballogistics.com',
     siteName: 'DGR Global Logistics',
     images: [
@@ -59,7 +63,7 @@ export const metadata = {
         url: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=1200&q=80',
         width: 1200,
         height: 630,
-        alt: 'DGR Global Logistics Air Freight and Hazardous Material Handling Mumbai',
+        alt: 'DGR Global Logistics Air Cargo and Freight Terminal Mumbai Maharashtra',
       },
     ],
     locale: 'en_IN',
@@ -67,8 +71,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DGR Global Logistics | Freight & Dangerous Goods Specialist Mumbai',
-    description: 'Get What You Want, Just On Time. Fast Air Cargo, Ocean Console, UN Certified Packaging, and 24/7 Custom Clearance.',
+    title: 'DGR Global Logistics Mumbai | Freight & Hazardous Packaging Specialist',
+    description: 'Get What You Want, Just On Time. Fast Sahar Air Cargo, JNPT Ocean Console, UN Certified Packaging, and 24/7 Custom Clearance in Mumbai, India.',
     images: ['https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=1200&q=80'],
   },
   robots: {
@@ -82,6 +86,12 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'geo.region': 'IN-MH',
+    'geo.placename': 'Mumbai, Sahar Village, Andheri East, Maharashtra, India',
+    'geo.position': '19.0990;72.8745',
+    'ICBM': '19.0990, 72.8745',
+  },
 };
 
 export const viewport = {
@@ -91,21 +101,21 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  // Comprehensive Structured Data (JSON-LD) for LocalBusiness & LogisticsService
+  // Comprehensive Hyper-Localized Structured Data (JSON-LD)
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'LocalBusiness',
+        '@type': ['LocalBusiness', 'LogisticsService'],
         '@id': 'https://dgrgloballogistics.com/#organization',
         name: 'DGR Global Logistics',
-        alternateName: 'DGR Logistics Mumbai',
+        alternateName: ['DGR Logistics Mumbai', 'DGR Global Logistics Maharashtra', 'DGR Dangerous Goods Logistics'],
         slogan: 'GET WHAT YOU WANT, JUST ON TIME',
-        description: 'International freight forwarding, custom clearance (CHA), UN approved dangerous goods packaging, and hazardous labels supplier in Mumbai.',
+        description: 'Premier international freight forwarder, custom house agent (CHA), supplier of UN certified 4G/4GV boxes & drums, and certified hazardous material packaging in Mumbai, Maharashtra, India.',
         url: 'https://dgrgloballogistics.com',
         telephone: '+91-9028345261',
         email: 'dgr.export.logistics@gmail.com',
-        priceRange: '$$',
+        priceRange: '₹₹',
         image: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=1200&q=80',
         address: {
           '@type': 'PostalAddress',
@@ -141,24 +151,36 @@ export default function RootLayout({ children }) {
           name: 'Mayur Kadam',
           jobTitle: 'Manager - Operations and Sales',
           telephone: '+91-9028345261',
+          worksFor: {
+            '@type': 'Organization',
+            name: 'DGR Global Logistics',
+          },
         },
         areaServed: [
+          { '@type': 'City', name: 'Mumbai' },
+          { '@type': 'AdministrativeArea', name: 'Andheri East, Mumbai' },
+          { '@type': 'AdministrativeArea', name: 'Sahar Village, Mumbai' },
+          { '@type': 'AdministrativeArea', name: 'Navi Mumbai' },
+          { '@type': 'AdministrativeArea', name: 'Thane' },
+          { '@type': 'AdministrativeArea', name: 'Nhava Sheva (JNPT)' },
+          { '@type': 'AdministrativeArea', name: 'Pune, Maharashtra' },
+          { '@type': 'AdministrativeArea', name: 'Maharashtra' },
           { '@type': 'Country', name: 'India' },
           { '@type': 'AdministrativeArea', name: 'Worldwide' },
         ],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name: 'Logistics and Packaging Services',
+          name: 'Mumbai Freight & Dangerous Goods Services',
           itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Air Freight Forwarding' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Import & Console (Air & Sea)' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Clearance' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Warehouse & Distribution' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Supplier of Hazardous Labels' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'International Courier' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Supplier of UN Approved Drums & Boxes' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hazardous Material Packaging' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Consultancy & Documentation' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Air Freight Forwarding Mumbai Sahar' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Import & Console (Air & Sea) JNPT Mumbai' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Clearance CHA Mumbai' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Warehouse & Distribution Maharashtra' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Supplier of Hazardous Labels Mumbai India' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'International Courier Services Andheri East' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Supplier of UN Approved Drums & Boxes Mumbai' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hazardous Material Packaging Mumbai' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Consultancy & Documentation Shipper Declaration Mumbai' } },
           ],
         },
       },
@@ -167,34 +189,34 @@ export default function RootLayout({ children }) {
         mainEntity: [
           {
             '@type': 'Question',
-            name: 'What services does DGR Global Logistics provide?',
+            name: 'Which areas in Mumbai and Maharashtra does DGR Global Logistics serve?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'DGR Global Logistics provides Air Freight Forwarding, Import & Ocean Console (LCL/FCL), Custom Clearance (CHA), Warehousing, Supply of UN Approved Drums & 4G/4GV Boxes, Supply of Hazardous Labels (Class 1-9), Dangerous Goods Packaging, International Courier, and DG Consultancy & Documentation.',
+              text: 'DGR Global Logistics provides 24/7 doorstep pickup and customs clearance across Mumbai (Andheri, Sahar, Bandra, Kurla, BKC), Navi Mumbai, Thane, Taloja MIDC, Turbhe, JNPT Nhava Sheva, Tarapur, Chakan Pune, and pan-India industrial belts with direct airline connections from Mumbai CSMIA Air Cargo Complex.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Where is DGR Global Logistics located in Mumbai?',
+            name: 'How fast can export cargo be cleared at Mumbai Sahar Air Cargo Complex?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'DGR Global Logistics is located at 7/1 Creado House Ground Floor, Sutar pakhadi Near Sai Hanuman Mandir, Sahar Village, Andheri East, Mumbai 400099, minutes away from the Mumbai International Airport (CSMIA) Air Cargo Complex.',
+              text: 'Due to our strategic location in Sahar Village, Andheri East (minutes from MIAL Air Cargo Terminal), our operations lead Mayur Kadam manages immediate handovers, last-minute flight cut-offs, and expedited 24-hour custom clearance for standard and dangerous goods cargo.',
             },
           },
           {
             '@type': 'Question',
-            name: 'How can I contact Operations Manager Mayur Kadam?',
+            name: 'Are UN approved 4G/4GV boxes and hazard labels available in stock in Mumbai?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'You can contact Mayur Kadam directly via phone or WhatsApp at +91 9028345261 or by email at dgr.export.logistics@gmail.com.',
+              text: 'Yes! We maintain ready stock of UN certified 4G and 4GV fiberboard boxes, UN tight-head steel/HDPE drums, and Class 1 to 9 IATA/IMDG hazard diamond warning labels at our Mumbai hub with same-day delivery across Mumbai, Navi Mumbai, and Thane.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Do you supply certified UN boxes and hazardous labels?',
+            name: 'How do I contact DGR Global Logistics operations manager in Mumbai?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Yes, we supply genuine UN tested 4G and 4GV fiberboard boxes, UN rated steel & HDPE plastic drums, and Class 1 to 9 IATA/IMO certified hazardous diamond warning labels with ready stock in Mumbai.',
+              text: 'You can contact Mayur Kadam (Manager - Operations and Sales) directly by calling or WhatsApping +91 9028345261, or email dgr.export.logistics@gmail.com.',
             },
           },
         ],

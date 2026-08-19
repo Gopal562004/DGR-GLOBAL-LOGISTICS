@@ -5,7 +5,9 @@ import Navbar from './Navbar';
 import Hero from './Hero';
 import ServicesSection from './ServicesSection';
 import HazardousPackagingHub from './HazardousPackagingHub';
+import MumbaiHubSection from './MumbaiHubSection';
 import AboutSection from './AboutSection';
+import FAQSection from './FAQSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 import FloatingCTA from './FloatingCTA';
@@ -32,10 +34,25 @@ export default function MainPageClient() {
 
       {/* Main Semantic Body */}
       <main>
+        {/* Hero Section */}
         <Hero onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* 9 Services */}
         <ServicesSection onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* UN Packaging & DG Specialization */}
         <HazardousPackagingHub onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* Dedicated Mumbai, JNPT & Maharashtra Cargo Gateway */}
+        <MumbaiHubSection onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* About Mayur Kadam & Operations Desk */}
         <AboutSection onOpenQuoteModal={handleOpenQuoteModal} />
+
+        {/* Rich SEO FAQ Section */}
+        <FAQSection />
+
+        {/* Contact & Location Section */}
         <ContactSection />
       </main>
 
