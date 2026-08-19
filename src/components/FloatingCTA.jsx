@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { MessageSquare, Phone } from 'lucide-react';
 import { COMPANY_INFO } from '../data/logisticsData';

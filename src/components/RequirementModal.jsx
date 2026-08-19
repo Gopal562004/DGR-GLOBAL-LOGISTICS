@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, MessageSquare, Phone, Mail, CheckCircle2, Send } from 'lucide-react';
 import { COMPANY_INFO, SERVICES } from '../data/logisticsData';
