@@ -1,7 +1,9 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Space_Grotesk } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
+
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -240,6 +242,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-slate-900 antialiased selection:bg-amber-500 selection:text-slate-950">
         {children}
+        <Analytics />
       </body>
     </html>
   );
