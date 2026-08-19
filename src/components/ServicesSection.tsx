@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { 
   Plane, 
   Container, 
@@ -12,7 +13,8 @@ import {
   Flame, 
   FileSpreadsheet, 
   ArrowRight,
-  MessageSquare
+  MessageSquare,
+  ChevronRight
 } from 'lucide-react';
 import { SERVICES, COMPANY_INFO, ServiceItem } from '../data/logisticsData';
 
@@ -68,7 +70,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) =
                 className="bg-white border border-slate-200 hover:border-slate-800 transition-all duration-200 flex flex-col justify-between shadow-xs hover:shadow-md group"
               >
                 {/* Service Photo Header */}
-                <div className="relative h-44 overflow-hidden bg-slate-100">
+                <Link href={`/services/${service.slug}`} className="relative h-44 overflow-hidden bg-slate-100 block">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -80,13 +82,16 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) =
                   <div className="absolute bottom-0 inset-x-0 bg-slate-900/80 text-white px-3 py-1.5 text-[11px] font-bold uppercase truncate">
                     {service.tagline}
                   </div>
-                </div>
+                </Link>
 
                 {/* Service Content */}
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-base font-bold font-heading text-slate-950 group-hover:text-amber-700 transition-colors uppercase mb-2">
-                      {service.title}
+                      <Link href={`/services/${service.slug}`} className="hover:underline flex items-center justify-between">
+                        <span>{service.title}</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600" />
+                      </Link>
                     </h3>
 
                     <p className="text-xs text-slate-600 leading-relaxed mb-4">
@@ -106,13 +111,13 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) =
 
                   {/* Actions */}
                   <div className="pt-4 border-t border-slate-200 grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => onOpenQuoteModal(service.title)}
-                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase py-2 px-3 flex items-center justify-center gap-1.5 transition-colors"
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase py-2 px-3 flex items-center justify-center gap-1.5 transition-colors text-center"
                     >
-                      <span>Inquire</span>
+                      <span>Details</span>
                       <ArrowRight className="w-3 h-3 text-amber-400" />
-                    </button>
+                    </Link>
 
                     <a
                       href={`https://wa.me/${COMPANY_INFO.whatsappPhone}?text=${encodeURIComponent(`Hello Mayur, I would like to inquire about ${service.title}.`)}`}

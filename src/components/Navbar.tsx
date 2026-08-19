@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   Phone, 
   Mail, 
@@ -14,20 +15,28 @@ import {
 import { COMPANY_INFO } from '../data/logisticsData';
 
 interface NavbarProps {
-  onOpenQuoteModal: (serviceName?: string) => void;
+  onOpenQuoteModal?: (serviceName?: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Our Services", href: "#services" },
-    { name: "Dangerous Goods & UN Packaging", href: "#hazmat" },
-    { name: "Mumbai Gateway", href: "#mumbai-gateway" },
-    { name: "About Operations", href: "#about" },
-    { name: "FAQs", href: "#faq" },
-    { name: "Contact", href: "#contact" }
+    { name: "Services", href: "/#services" },
+    { name: "UN Packaging", href: "/#hazmat" },
+    { name: "Mumbai Hub", href: "/#mumbai-gateway" },
+    { name: "About", href: "/#about" },
+    { name: "FAQs", href: "/#faq" },
+    { name: "Contact", href: "/#contact" }
   ];
+
+  const handleQuoteClick = () => {
+    if (onOpenQuoteModal) {
+      onOpenQuoteModal();
+    } else {
+      window.open(`https://wa.me/${COMPANY_INFO.whatsappPhone}?text=Hello%20Mayur,%20I%20would%20like%20to%20request%20a%20logistics%20rate%20quote.`, '_blank');
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
@@ -83,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
         <div className="flex items-center justify-between h-20">
           
           {/* Visiting Card Logo Reproduction */}
-          <a href="#" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center font-bold text-lg border border-slate-800 shadow-sm shrink-0">
               <span className="font-mono text-base font-extrabold">&gt;</span>
             </div>
@@ -101,25 +110,25 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
                 {COMPANY_INFO.tagline}
               </p>
             </div>
-          </a>
+          </Link>
 
           {/* Clean Navigation Links */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-bold text-slate-700 hover:text-amber-600 transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Quote Button */}
           <div className="hidden sm:flex items-center gap-3">
             <button
-              onClick={() => onOpenQuoteModal()}
+              onClick={handleQuoteClick}
               className="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold uppercase tracking-wider px-5 py-2.5 border border-amber-600 shadow-sm flex items-center gap-1.5 transition-all"
             >
               <Send className="w-3.5 h-3.5" />
@@ -130,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
           {/* Mobile Toggle */}
           <div className="flex lg:hidden items-center gap-2">
             <button
-              onClick={() => onOpenQuoteModal()}
+              onClick={handleQuoteClick}
               className="bg-amber-500 text-slate-950 text-xs font-bold px-3 py-2 uppercase"
             >
               Quote
@@ -152,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
         <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3">
           <div className="flex flex-col space-y-2 pt-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -160,7 +169,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
               >
                 <span>{link.name}</span>
                 <ChevronRight className="w-4 h-4 text-slate-400" />
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -168,7 +177,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenQuoteModal();
+                handleQuoteClick();
               }}
               className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 text-xs uppercase tracking-wider text-center"
             >

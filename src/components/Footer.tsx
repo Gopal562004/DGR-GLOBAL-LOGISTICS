@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { 
   Phone, 
   Mail, 
@@ -11,7 +12,7 @@ import {
 import { COMPANY_INFO, SERVICES, ServiceItem } from '../data/logisticsData';
 
 interface FooterProps {
-  onOpenQuoteModal: (serviceName?: string) => void;
+  onOpenQuoteModal?: (serviceName?: string) => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
@@ -28,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           
           {/* Col 1: Brand & Visiting Card Identity (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-sm">
                 &gt;
               </div>
@@ -40,7 +41,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
                   GLOBAL LOGISTICS
                 </span>
               </div>
-            </div>
+            </Link>
 
             <p className="text-xs text-slate-300 font-bold uppercase tracking-wider">
               "{COMPANY_INFO.tagline}"
@@ -60,18 +61,18 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           {/* Col 2: All 9 Services (5 cols) */}
           <div className="lg:col-span-5 space-y-3">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-amber-400 border-b border-slate-800 pb-2">
-              Our 9 Core Services
+              Our 9 Core Services (Dedicated Pages)
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               {SERVICES.map((s: ServiceItem) => (
-                <button
+                <Link
                   key={s.id}
-                  onClick={() => onOpenQuoteModal(s.title)}
+                  href={`/services/${s.slug}`}
                   className="text-left text-slate-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 py-0.5 truncate"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500 shrink-0" />
                   <span className="truncate">{s.title}</span>
-                </button>
+                </Link>
               ))}
             </div>
           </div>
@@ -106,12 +107,14 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
             </div>
 
             <div className="pt-2">
-              <button
-                onClick={() => onOpenQuoteModal()}
-                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase py-2 px-3 text-center transition-colors"
+              <a
+                href={`https://wa.me/${COMPANY_INFO.whatsappPhone}?text=Hello%20Mayur,%20I%20would%20like%20to%20request%20a%20logistics%20rate%20quote.`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase py-2 px-3 flex items-center justify-center transition-colors block text-center"
               >
-                Request Quote
-              </button>
+                Request Quote on WhatsApp
+              </a>
             </div>
           </div>
 
@@ -120,11 +123,11 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
         {/* Bottom Strip */}
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} <strong>DGR Global Logistics</strong>. All rights reserved. Mumbai, India.
+            © {new Date().getFullYear()} <strong>DGR Global Logistics</strong>. All rights reserved. Mumbai, Maharashtra, India.
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-[11px] text-slate-500">IATA DGR & IMO Compliant Logistics</span>
+            <span className="text-[11px] text-slate-500">IATA DGR & IMO Compliant Logistics Hub</span>
             <button
               onClick={scrollToTop}
               className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
