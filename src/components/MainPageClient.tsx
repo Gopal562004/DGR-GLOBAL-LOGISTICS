@@ -5,9 +5,7 @@ import Navbar from './Navbar';
 import Hero from './Hero';
 import ServicesSection from './ServicesSection';
 import HazardousPackagingHub from './HazardousPackagingHub';
-import MumbaiHubSection from './MumbaiHubSection';
 import AboutSection from './AboutSection';
-import FAQSection from './FAQSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 import FloatingCTA from './FloatingCTA';
@@ -28,29 +26,23 @@ const MainPageClient: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-amber-500 selection:text-slate-950 pb-12 sm:pb-0">
       {/* Semantic Header */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 
       {/* Main Semantic Body */}
       <main>
-        {/* Hero Section */}
+        {/* Hero Section with Quick Rate Estimator */}
         <Hero onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* 9 Services */}
-        <ServicesSection onOpenQuoteModal={handleOpenQuoteModal} />
-
-        {/* UN Packaging & DG Specialization */}
+        {/* UN Packaging & DG Specialization (Manufacturer & Supplier Hub) */}
         <HazardousPackagingHub onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* Dedicated Mumbai, JNPT & Maharashtra Cargo Gateway */}
-        <MumbaiHubSection onOpenQuoteModal={handleOpenQuoteModal} />
+        {/* Categorized Services with Interactive Tabs */}
+        <ServicesSection onOpenQuoteModal={handleOpenQuoteModal} />
 
-        {/* About Mayur Kadam & Operations Desk */}
+        {/* High-Trust Operations Desk, Visiting Card & Mumbai Gateways */}
         <AboutSection onOpenQuoteModal={handleOpenQuoteModal} />
-
-        {/* Rich SEO FAQ Section */}
-        <FAQSection />
 
         {/* Contact & Location Section */}
         <ContactSection />

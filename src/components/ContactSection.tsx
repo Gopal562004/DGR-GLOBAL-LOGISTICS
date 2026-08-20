@@ -82,7 +82,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-[11px] font-bold text-slate-500 uppercase">Direct Mobile</div>
-                  <a href={`tel:${COMPANY_INFO.phone}`} className="text-base font-bold text-slate-950 hover:text-amber-600">
+                  <a href={`tel:+91${COMPANY_INFO.phone}`} className="text-base font-bold text-slate-950 hover:text-amber-600">
                     {COMPANY_INFO.displayPhone}
                   </a>
                 </div>

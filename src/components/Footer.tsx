@@ -43,12 +43,12 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
               </div>
             </Link>
 
-            <p className="text-xs text-slate-300 font-bold uppercase tracking-wider">
+            <p className="text-xs text-amber-400 font-bold uppercase tracking-wider">
               "{COMPANY_INFO.tagline}"
             </p>
 
             <p className="text-xs text-slate-400 leading-relaxed">
-              Mumbai's premier partner for International Air & Ocean Freight Forwarding, UN Certified Dangerous Goods Packaging, Custom House Agent (CHA) Clearance, and Express International Courier.
+              International Freight Forwarding, Custom Clearance (CHA), and UN Certified Hazardous Packaging based at Mumbai Sahar Airport.
             </p>
 
             <div className="pt-2">
@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           {/* Col 2: All 9 Services (5 cols) */}
           <div className="lg:col-span-5 space-y-3">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-amber-400 border-b border-slate-800 pb-2">
-              Our 9 Core Services (Dedicated Pages)
+              Our 9 Core Services
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               {SERVICES.map((s: ServiceItem) => (
@@ -80,7 +80,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           {/* Col 3: Contact & Address (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-amber-400 border-b border-slate-800 pb-2">
-              Mumbai Hub
+              Mumbai Office & Contact
             </h4>
 
             <div className="space-y-2.5 text-xs text-slate-300">
@@ -93,7 +93,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
 
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <a href={`tel:${COMPANY_INFO.phone}`} className="font-bold text-white hover:text-amber-400">
+                <a href={`tel:+91${COMPANY_INFO.phone}`} className="font-bold text-white hover:text-amber-400">
                   {COMPANY_INFO.displayPhone}
                 </a>
               </div>

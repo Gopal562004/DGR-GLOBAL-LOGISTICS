@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SERVICES } from '@/data/logisticsData';
+import { SERVICES, UN_PRODUCTS } from '@/data/logisticsData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dgrgloballogistics.com';
@@ -12,31 +12,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/products`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/#services`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#hazmat`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#mumbai-gateway`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/#about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#faq`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -57,5 +51,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  // All Dedicated UN Product Page Routes for Direct Google Search Indexing
+  const productRoutes: MetadataRoute.Sitemap = UN_PRODUCTS.map((product) => ({
+    url: `${baseUrl}/products/${product.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...productRoutes];
 }

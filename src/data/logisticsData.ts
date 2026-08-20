@@ -10,12 +10,44 @@ export interface Address {
   state: string;
 }
 
+export interface UNProduct {
+  id: string;
+  name: string;
+  category: 'un-boxes' | 'hdpe-drums' | 'jerry-cans' | 'steel-drums' | 'labels-absorbents';
+  itemCode?: string;
+  price: number;
+  priceDisplay: string;
+  capacity: string;
+  packingGroup: string;
+  dimensions?: string;
+  tareWeight?: string;
+  material: string;
+  image: string;
+  galleryImages?: string[];
+  popular?: boolean;
+}
+
+export interface ReviewItem {
+  id: string;
+  name: string;
+  location: string;
+  date: string;
+  product: string;
+  rating: number;
+  comment?: string;
+}
+
 export interface CompanyInfo {
   name: string;
   tagline: string;
   subTagline: string;
   contactPerson: string;
   role: string;
+  proprietor: string;
+  gstNo: string;
+  iecCode: string;
+  establishedYear: string;
+  annualTurnover: string;
   phone: string;
   displayPhone: string;
   whatsappPhone: string;
@@ -73,13 +105,18 @@ export const COMPANY_INFO: CompanyInfo = {
   subTagline: "International Freight Forwarding, Custom Clearance & Certified Hazardous Material Packaging",
   contactPerson: "Mayur Kadam",
   role: "Manager - Operations and Sales",
+  proprietor: "Nitesh Kondalkar",
+  gstNo: "27CBKPK7600K1ZE",
+  iecCode: "0314058907",
+  establishedYear: "2011",
+  annualTurnover: "₹1.5 - 5 Crore",
   phone: "9028345261",
   displayPhone: "+91 90283 45261",
   whatsappPhone: "919028345261",
   email: "dgr.export.logistics@gmail.com",
   address: {
-    line1: "Rj Villa, Sutar Pakhadi",
-    line2: "Near Khushi Wine Shop",
+    line1: "Shop No. 103, CTS No. 365 36 4, Arahie Cabral Brothers Chawl",
+    line2: "Church Pakhadi Main Road, Sahar Village",
     line3: "Sahar Cargo Complex, Andheri East",
     city: "Mumbai",
     pincode: "400099",
@@ -90,6 +127,327 @@ export const COMPANY_INFO: CompanyInfo = {
   coverage: "Worldwide Air & Ocean Networks across 180+ Countries"
 };
 
+export const UN_PRODUCTS: UNProduct[] = [
+  // UN 4GV Boxes
+  {
+    id: "un-4gv-x3",
+    name: "UN Mark 4GV X3 Fibreboard Box",
+    category: "un-boxes",
+    itemCode: "X3",
+    price: 130,
+    priceDisplay: "₹130 / Piece",
+    capacity: "3 Kg",
+    packingGroup: "I, II & III (PG I, II, III)",
+    dimensions: "19 × 19 × 31 cm",
+    tareWeight: "450 gm",
+    material: "Heavy-Duty Fibreboard",
+    image: "/images/un-4gv-box-closeup.jpg",
+    galleryImages: [
+      "/images/un-4gv-box-closeup.jpg",
+      "/images/un-boxes-drums.jpg",
+      "/images/hazmat-labels-packing.jpg"
+    ],
+    popular: true
+  },
+  {
+    id: "un-4gv-x6",
+    name: "UN Mark 4GV X6 Fibreboard Box",
+    category: "un-boxes",
+    itemCode: "X6",
+    price: 150,
+    priceDisplay: "₹150 / Piece",
+    capacity: "6 Kg",
+    packingGroup: "I, II & III",
+    dimensions: "23 × 23 × 37 cm",
+    tareWeight: "650 gm",
+    material: "Heavy-Duty Fibreboard",
+    image: "/images/un-4gv-box-closeup.jpg",
+    galleryImages: [
+      "/images/un-4gv-box-closeup.jpg",
+      "/images/un-boxes-drums.jpg"
+    ]
+  },
+  {
+    id: "un-4gv-x9",
+    name: "UN Mark 4GV X9 Fibreboard Box",
+    category: "un-boxes",
+    itemCode: "X9",
+    price: 200,
+    priceDisplay: "₹200 / Piece",
+    capacity: "9 Kg",
+    packingGroup: "I, II & III",
+    dimensions: "28 × 28 × 38 cm",
+    tareWeight: "900 gm",
+    material: "Heavy-Duty Fibreboard",
+    image: "/images/un-4gv-box-closeup.jpg",
+    galleryImages: [
+      "/images/un-4gv-box-closeup.jpg",
+      "/images/un-boxes-drums.jpg"
+    ],
+    popular: true
+  },
+  {
+    id: "un-4gv-x22",
+    name: "UN Mark 4GV X22 Fibreboard Box",
+    category: "un-boxes",
+    itemCode: "X22",
+    price: 300,
+    priceDisplay: "₹300 / Piece",
+    capacity: "22 Kg",
+    packingGroup: "I, II & III",
+    dimensions: "37 × 37 × 43 cm",
+    tareWeight: "1.5 Kg",
+    material: "Heavy-Duty Fibreboard",
+    image: "/images/un-4gv-box-closeup.jpg",
+    galleryImages: [
+      "/images/un-4gv-box-closeup.jpg",
+      "/images/un-boxes-drums.jpg"
+    ]
+  },
+  {
+    id: "un-4gv-x31",
+    name: "UN Mark 4GV X31 Fibreboard Box",
+    category: "un-boxes",
+    itemCode: "X31",
+    price: 350,
+    priceDisplay: "₹350 / Piece",
+    capacity: "31 Kg",
+    packingGroup: "I, II & III",
+    dimensions: "47 × 47 × 43 cm",
+    tareWeight: "2.0 Kg",
+    material: "Heavy-Duty Fibreboard",
+    image: "/images/un-4gv-box-closeup.jpg",
+    galleryImages: [
+      "/images/un-4gv-box-closeup.jpg",
+      "/images/un-boxes-drums.jpg",
+      "/images/hazmat-labels-packing.jpg"
+    ],
+    popular: true
+  },
+  {
+    id: "un-4gv-x55",
+    name: "UN Mark 4GV X55 Fibreboard Box",
+    category: "un-boxes",
+    itemCode: "X55",
+    price: 450,
+    priceDisplay: "₹450 / Piece",
+    capacity: "55 Kg",
+    packingGroup: "I, II & III",
+    dimensions: "50 × 50 × 55 cm",
+    tareWeight: "2.5 Kg",
+    material: "Heavy-Duty Fibreboard",
+    image: "/images/un-4gv-box-closeup.jpg",
+    galleryImages: [
+      "/images/un-4gv-box-closeup.jpg",
+      "/images/un-boxes-drums.jpg"
+    ],
+    popular: true
+  },
+
+  // HDPE Drums
+  {
+    id: "hdpe-drum-30l",
+    name: "UN Approved 30L Open Top HDPE Drum",
+    category: "hdpe-drums",
+    price: 360,
+    priceDisplay: "₹360 / Piece",
+    capacity: "30 Litres",
+    packingGroup: "I, II & III",
+    dimensions: "Height: 530mm | Width: 330mm",
+    material: "Virgin Grade HDPE",
+    image: "/images/hdpe-open-top-drum.jpg",
+    galleryImages: [
+      "/images/hdpe-open-top-drum.jpg",
+      "/images/un-boxes-drums.jpg"
+    ]
+  },
+  {
+    id: "hdpe-drum-35l",
+    name: "UN Approved 35L Open Top HDPE Drum",
+    category: "hdpe-drums",
+    price: 430,
+    priceDisplay: "₹430 / Piece",
+    capacity: "35 Litres",
+    packingGroup: "I, II & III",
+    dimensions: "32 × 32 × 54 cm | Tare: 2.5 Kg",
+    material: "Virgin Grade HDPE",
+    image: "/images/hdpe-open-top-drum.jpg",
+    galleryImages: [
+      "/images/hdpe-open-top-drum.jpg",
+      "/images/un-boxes-drums.jpg"
+    ],
+    popular: true
+  },
+  {
+    id: "hdpe-drum-60l",
+    name: "UN Approved 60L Open Top HDPE Drum",
+    category: "hdpe-drums",
+    price: 600,
+    priceDisplay: "₹600 / Piece",
+    capacity: "60 Litres",
+    packingGroup: "I, II & III",
+    dimensions: "Height: 680mm | Width: 370mm",
+    material: "Virgin Grade HDPE",
+    image: "/images/hdpe-open-top-drum.jpg",
+    galleryImages: [
+      "/images/hdpe-open-top-drum.jpg",
+      "/images/un-boxes-drums.jpg"
+    ]
+  },
+
+  // Jerry Cans
+  {
+    id: "jerrycan-35l-un",
+    name: "UN Approved 35L HDPE Jerry Can (3H1/X35)",
+    category: "jerry-cans",
+    price: 430,
+    priceDisplay: "₹430 / Piece",
+    capacity: "35 Litres",
+    packingGroup: "II & III",
+    dimensions: "30 × 28 × 46 cm | Tare: 2.5 Kg",
+    material: "High Density Polyethylene (HDPE)",
+    image: "/images/hdpe-jerry-can-un.jpg",
+    galleryImages: [
+      "/images/hdpe-jerry-can-un.jpg",
+      "/images/un-boxes-drums.jpg"
+    ],
+    popular: true
+  },
+  {
+    id: "jerrycan-50l-un",
+    name: "UN Approved 50L Heavy-Duty HDPE Jerry Can",
+    category: "jerry-cans",
+    price: 600,
+    priceDisplay: "₹600 / Piece",
+    capacity: "50 Litres",
+    packingGroup: "II & III",
+    material: "High Density Polyethylene (HDPE)",
+    image: "/images/hdpe-jerry-can-un.jpg",
+    galleryImages: [
+      "/images/hdpe-jerry-can-un.jpg",
+      "/images/un-boxes-drums.jpg"
+    ]
+  },
+
+  // Steel & Special Drums
+  {
+    id: "drum-220l-pg2",
+    name: "UN Marking Drum PG II (Chemical Storage)",
+    category: "steel-drums",
+    price: 500,
+    priceDisplay: "₹500 / Piece",
+    capacity: "220 Litres",
+    packingGroup: "PG II (Medium Hazard)",
+    material: "Industrial Plastic / Chemical Grade",
+    image: "/images/un-boxes-drums.jpg",
+    galleryImages: [
+      "/images/un-boxes-drums.jpg",
+      "/images/hdpe-open-top-drum.jpg"
+    ]
+  },
+  {
+    id: "ms-drum-30l",
+    name: "UN Approved Mild Steel (MS) Drum",
+    category: "steel-drums",
+    price: 400,
+    priceDisplay: "₹400 / Piece",
+    capacity: "10-30 Litres",
+    packingGroup: "I, II & III",
+    material: "Mild Steel (MS / 1A1)",
+    image: "/images/un-boxes-drums.jpg",
+    galleryImages: [
+      "/images/un-boxes-drums.jpg",
+      "/images/hdpe-open-top-drum.jpg"
+    ]
+  },
+
+  // Labels & Absorbents
+  {
+    id: "hazmat-labels-all",
+    name: "Hazardous Material Diamond Labels (Class 1-9)",
+    category: "labels-absorbents",
+    price: 5,
+    priceDisplay: "₹5 / Piece",
+    capacity: "Class 1 to 9 (Flammable, Toxic, Corrosive)",
+    packingGroup: "IATA / IMDG Compliant",
+    material: "Self-Adhesive Weatherproof PVC",
+    image: "/images/hazmat-labels-packing.jpg",
+    galleryImages: [
+      "/images/hazmat-labels-packing.jpg",
+      "/images/un-4gv-box-closeup.jpg"
+    ],
+    popular: true
+  },
+  {
+    id: "chemical-absorbent-powder",
+    name: "Chemical Absorbent Socks & Bio-Tech Powder",
+    category: "labels-absorbents",
+    price: 850,
+    priceDisplay: "Ask for Price (20-25 Kg Bag)",
+    capacity: "20 Kg / 25 Kg Bags",
+    packingGroup: "Spill Response / Hazmat",
+    material: "Bio-Tech Industrial Powder",
+    image: "/images/hazmat-labels-packing.jpg",
+    galleryImages: [
+      "/images/hazmat-labels-packing.jpg",
+      "/images/hero-cargo-warehouse.jpg"
+    ]
+  }
+];
+
+export const CUSTOMER_REVIEWS: ReviewItem[] = [
+  {
+    id: "rev-1",
+    name: "Mahesh Laxman Makwana",
+    location: "Mumbai, Maharashtra",
+    date: "30-July-2024",
+    product: "UN Approved Packaging Boxes (4GV X31)",
+    rating: 5,
+    comment: "Prompt delivery of UN certified 4GV boxes for our chemical air export from Mumbai airport. Quality is top-notch."
+  },
+  {
+    id: "rev-2",
+    name: "Mehul Solanki",
+    location: "Mumbai, Maharashtra",
+    date: "05-October-2025",
+    product: "UN Approved 35L HDPE Packaging Drum",
+    rating: 5,
+    comment: "Excellent support by Mayur Kadam for our dangerous cargo clearance and drum certification. Highly recommended."
+  },
+  {
+    id: "rev-3",
+    name: "SQUARE S INTERNATIONAL",
+    location: "Kolkata, West Bengal",
+    date: "20-October-2022",
+    product: "UN Approved Packaging & Freight Clearance",
+    rating: 5,
+    comment: "Reliable logistics partner with fast customs response and genuine UN certificates provided with each batch."
+  }
+];
+
+export const FAQ_ITEMS = [
+  {
+    q: "What makes DGR Global Logistics the top freight forwarder in Mumbai?",
+    a: "Our ground operations office is situated in Sahar Village, Andheri East (adjacent to Mumbai CSMIA Air Cargo Complex). This strategic location enables us to offer faster flight space allocation, immediate airport handovers, late flight cut-off clearance, and 24/7 on-site dangerous goods handling led by Operations Manager Mayur Kadam."
+  },
+  {
+    q: "Do you supply UN approved 4G/4GV boxes (X3, X6, X9, X22, X31, X55) with test certificates in Mumbai?",
+    a: "Yes. We maintain extensive ready inventory of UN certified 4GV fiberboard boxes from X3 (3 Kg @ ₹130) to X55 (55 Kg @ ₹450), UN rated tight-head steel drums, and HDPE plastic jerricans (1H1/3H1) tested for Packing Groups I, II, and III (X, Y, Z ratings), with genuine test certificates provided."
+  },
+  {
+    q: "Which areas in Mumbai and Maharashtra do you cover for cargo pickup?",
+    a: "We offer same-day doorstep pickup across all areas of Mumbai (Andheri, Sahar, BKC, Bandra, Kurla), Navi Mumbai, Thane, JNPT / Nhava Sheva, Taloja MIDC, Turbhe, Tarapur, Chakan / Pune industrial corridors, and pan-India manufacturing hubs."
+  },
+  {
+    q: "What Dangerous Goods (DG) classes and labels do you provide?",
+    a: "We supply certified weather-resistant IATA/IMDG warning diamond labels for all Class 1 to 9 hazardous materials (starting at ₹5/piece), including Class 3 (Flammable Liquids), Class 8 (Corrosives), Class 9 (Lithium Batteries & Dry Ice), Limited Quantity (LQ) marks, and Cargo Aircraft Only (CAO) placards."
+  },
+  {
+    q: "How can I get an immediate rate quote for Air, Sea, or Packaging supplies?",
+    a: "You can reach out directly to Mayur Kadam (Manager - Operations & Sales) via Phone or WhatsApp at +91 9028345261 or email dgr.export.logistics@gmail.com for an instant quotation within 15 minutes."
+  }
+];
+
 export const SERVICES: ServiceItem[] = [
   {
     id: "air-freight",
@@ -97,7 +455,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Air Freight Forwarding",
     tagline: "Expedited Worldwide Air Cargo from Mumbai (BOM)",
     icon: "Plane",
-    image: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/mumbai-airport-cargo.jpg",
     description: "Fast airport-to-airport and door-to-door air freight services with guaranteed space allocation and rapid customs handling at Mumbai Sahar Air Cargo Terminal.",
     features: [
       "Priority and deferred air freight",
@@ -148,7 +506,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Import & Console (Air & Sea)",
     tagline: "LCL & FCL Ocean & Air Consolidation Worldwide",
     icon: "Container",
-    image: "https://images.unsplash.com/photo-1559297434-fae8a1916a79?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/ocean-freight-jnpt.jpg",
     description: "Cost-effective ocean and air consolidation solutions for Less than Container Load (LCL) and Full Container Load (FCL) shipments across major global sea trade lanes.",
     features: [
       "Regular scheduled consolidation boxes",
@@ -195,7 +553,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Custom Clearance",
     tagline: "Fast & Error-Free Custom House Agent (CHA) Services",
     icon: "FileCheck2",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/customs-clearance-cha.jpg",
     description: "Expert Custom House Agent (CHA) clearance services at Mumbai Air Cargo Complex, seaport terminals, and ICDs with complete duty and HS Code compliance.",
     features: [
       "Import & Export Bill of Entry filing",
@@ -242,7 +600,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Warehouse & Distribution",
     tagline: "Secure Storage, Inventory & Pan-India Distribution",
     icon: "Warehouse",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/warehouse-logistics-mumbai.jpg",
     description: "Safe and strategically located warehousing facilities offering inventory management, palletization, pick-and-pack, and nationwide last-mile transport.",
     features: [
       "Short & long term secure storage",
@@ -289,7 +647,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Supplier of Hazardous Labels",
     tagline: "IATA, IMO & ADR Certified Class 1 to 9 Warning Labels",
     icon: "ShieldAlert",
-    image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/hazmat-labels-packing.jpg",
     description: "Supplying top quality, weather-resistant Class 1 to 9 hazard diamond labels, handling marks, lithium battery marks, and container placards adhering to ICAO/IATA norms.",
     features: [
       "Class 1 to 9 Hazard Diamond labels",
@@ -336,7 +694,7 @@ export const SERVICES: ServiceItem[] = [
     title: "International Courier",
     tagline: "Worldwide Express Doorstep Parcel & Sample Delivery",
     icon: "Globe",
-    image: "https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/express-courier-mumbai.jpg",
     description: "Global express courier solutions for urgent business documents, commercial samples, gifts, and packages with end-to-end milestone tracking.",
     features: [
       "Express 2 to 4 days worldwide transit",
@@ -383,7 +741,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Supplier of UN Approved Drums & Boxes",
     tagline: "Certified Heavy-Duty Packaging for Dangerous Cargo",
     icon: "Box",
-    image: "https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/un-boxes-drums.jpg",
     description: "Certified supplier of genuine UN tested 4G / 4GV fiberboard boxes, steel drums (1A1), and HDPE plastic jerricans (1H1/3H1) rated for Packing Groups I, II, and III.",
     features: [
       "UN 4G / 4GV Certified Fiberboard Boxes",
@@ -434,7 +792,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Hazardous Material Packaging",
     tagline: "Certified DG Packing, Dry Ice & Dangerous Goods Handling",
     icon: "Flame",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/hero-cargo-warehouse.jpg",
     description: "Certified dangerous goods packaging performed by trained professionals. Handling flammable liquids, chemicals, lithium batteries, and dry ice conditioned pharma goods.",
     features: [
       "Dry Ice (-78.5°C) thermal conditioning",
@@ -481,7 +839,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Consultancy & Documentation",
     tagline: "Shipper's Declaration for DG & International Advisory",
     icon: "FileSpreadsheet",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/dg-documentation-desk.jpg",
     description: "End-to-end guidance on Dangerous Goods Regulations (DGR). Preparing Shipper’s Declaration (DGD), verifying MSDS/SDS sheets, and ensuring 100% airline acceptance.",
     features: [
       "Shipper's Declaration (DGD) preparation",

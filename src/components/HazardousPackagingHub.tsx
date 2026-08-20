@@ -1,170 +1,171 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { 
   ShieldAlert, 
-  Box, 
-  Flame, 
-  FileSpreadsheet, 
-  MessageSquare
+  ArrowRight,
+  MessageSquare,
+  ShieldCheck,
+  Package
 } from 'lucide-react';
-import { HAZARDOUS_CLASSES, COMPANY_INFO, HazardousClass } from '../data/logisticsData';
+import { COMPANY_INFO, UN_PRODUCTS } from '../data/logisticsData';
 
 interface HazardousPackagingHubProps {
   onOpenQuoteModal: (serviceName?: string) => void;
 }
 
+const CATEGORY_SHOWCASE = [
+  {
+    categoryId: 'un-boxes',
+    categoryName: 'UN 4GV Boxes',
+    product: UN_PRODUCTS.find(p => p.id === 'un-4gv-x31') || UN_PRODUCTS[4], // X31 (₹350)
+  },
+  {
+    categoryId: 'hdpe-drums',
+    categoryName: 'HDPE Open Top Drums',
+    product: UN_PRODUCTS.find(p => p.id === 'hdpe-drum-35l') || UN_PRODUCTS[7], // 35L Drum (₹430)
+  },
+  {
+    categoryId: 'jerry-cans',
+    categoryName: 'UN Jerry Cans (3H1)',
+    product: UN_PRODUCTS.find(p => p.id === 'jerrycan-35l-un') || UN_PRODUCTS[9], // 35L Jerry Can (₹430)
+  },
+  {
+    categoryId: 'labels-absorbents',
+    categoryName: 'Hazard Labels & DG',
+    product: UN_PRODUCTS.find(p => p.id === 'hazmat-labels-all') || UN_PRODUCTS[13], // Hazmat Labels (₹5)
+  },
+];
+
 const HazardousPackagingHub: React.FC<HazardousPackagingHubProps> = ({ onOpenQuoteModal }) => {
   return (
-    <section id="hazmat" className="py-20 bg-white border-b border-slate-200">
+    <section id="hazmat" className="py-14 sm:py-18 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 space-y-2">
           <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-300 text-xs font-bold px-3 py-1 uppercase tracking-widest">
-            <ShieldAlert className="w-3.5 h-3.5 text-amber-600" /> Dangerous Goods Specialization
+            <ShieldAlert className="w-3.5 h-3.5 text-amber-600" /> Manufacturer & Supplier in Mumbai
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
-            UN Approved Packaging & Hazmat Solutions
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
+            UN CERTIFIED PACKAGING & DRUMS
           </h2>
-          <div className="w-16 h-1 bg-amber-500 mx-auto"></div>
-          <p className="text-sm sm:text-base text-slate-600">
-            Certified IATA DGR and IMO compliant packaging materials, UN certified drums/boxes, and Class 1 to 9 hazard labels with ready stock in Mumbai.
+          <div className="w-12 h-1 bg-amber-500 mx-auto"></div>
+          <p className="text-xs sm:text-sm text-slate-600">
+            Factory rates for UN 4GV fiberboard boxes, open-top HDPE drums, Jerry cans, and Class 1-9 hazard labels.
           </p>
         </div>
 
-        {/* 2-Column Clean Layout with Photos */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-12">
-          
-          {/* Left Visual Photo Grid (6 cols) */}
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
-              <img
-                src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=600&q=80"
-                alt="UN Tested Boxes Mumbai"
-                className="w-full h-44 object-cover"
-              />
-              <div className="p-3 bg-white">
-                <div className="font-bold text-xs text-slate-950 uppercase">UN 4G / 4GV Boxes</div>
-                <div className="text-[11px] text-slate-500">Packing Groups I, II & III</div>
-              </div>
-            </div>
-
-            <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
-              <img
-                src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80"
-                alt="Hazardous Warning Labels Mumbai"
-                className="w-full h-44 object-cover"
-              />
-              <div className="p-3 bg-white">
-                <div className="font-bold text-xs text-slate-950 uppercase">Hazardous Labels</div>
-                <div className="text-[11px] text-slate-500">IATA / IMDG Class 1-9</div>
-              </div>
-            </div>
-
-            <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
-              <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80"
-                alt="DG Material Packaging Mumbai"
-                className="w-full h-44 object-cover"
-              />
-              <div className="p-3 bg-white">
-                <div className="font-bold text-xs text-slate-950 uppercase">Dry Ice & DG Packing</div>
-                <div className="text-[11px] text-slate-500">Pharma & Chemical safety</div>
-              </div>
-            </div>
-
-            <div className="border border-slate-200 shadow-sm overflow-hidden bg-slate-50">
-              <img
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
-                alt="Shippers Declaration Documentation Mumbai"
-                className="w-full h-44 object-cover"
-              />
-              <div className="p-3 bg-white">
-                <div className="font-bold text-xs text-slate-950 uppercase">DG Documentation</div>
-                <div className="text-[11px] text-slate-500">Shipper's Declaration (DGD)</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Core Capabilities (6 cols) */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-3">
-              <h3 className="text-2xl font-bold font-heading text-slate-950 uppercase">
-                End-to-End Hazardous Goods Handling
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Whether you need certified UN 4GV boxes for chemicals, temperature-controlled dry ice replenishment for biological samples, or authorized IATA diamond labels, our team ensures 100% carrier acceptance.
-              </p>
-            </div>
-
-            {/* Quick List */}
-            <div className="space-y-3 pt-2">
-              <div className="p-3.5 bg-slate-50 border border-slate-200 flex items-start gap-3">
-                <Box className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-xs font-bold text-slate-950 uppercase">UN 4G / 4GV Boxes & Steel/HDPE Drums</div>
-                  <div className="text-xs text-slate-600">Tested for drop, pressure, and leakage standards. Ready dispatch in Mumbai.</div>
-                </div>
-              </div>
-
-              <div className="p-3.5 bg-slate-50 border border-slate-200 flex items-start gap-3">
-                <Flame className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-xs font-bold text-slate-950 uppercase">Certified DG Packing & Lithium Batteries</div>
-                  <div className="text-xs text-slate-600">Specialist packing for Class 3, Class 8, and Class 9 / 9A battery consignments.</div>
-                </div>
-              </div>
-
-              <div className="p-3.5 bg-slate-50 border border-slate-200 flex items-start gap-3">
-                <FileSpreadsheet className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-xs font-bold text-slate-950 uppercase">Shipper's Declaration (DGD) & MSDS Audit</div>
-                  <div className="text-xs text-slate-600">Complete documentation prepared and signed by qualified DGR professionals.</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <button
-                onClick={() => onOpenQuoteModal("UN Packaging & Hazmat Supply")}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider px-5 py-3 border border-amber-600 shadow-sm transition-all"
+        {/* 4 Category-Diverse Real-Product Cards with Category Badges and Direct Links to /products */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 mb-8">
+          {CATEGORY_SHOWCASE.map((item) => {
+            const p = item.product;
+            return (
+              <div 
+                key={item.categoryId}
+                className="bg-slate-50 border border-slate-200 hover:border-slate-800 transition-all shadow-xs group flex flex-col justify-between"
               >
-                Inquire Packaging Supply
-              </button>
+                {/* Category Top Banner */}
+                <div className="bg-slate-900 text-amber-400 px-3 py-1.5 text-[11px] font-bold uppercase flex items-center justify-between">
+                  <span>{item.categoryName}</span>
+                  <Link 
+                    href={`/products?category=${item.categoryId}`}
+                    className="text-[10px] text-slate-300 hover:text-white underline"
+                  >
+                    View All →
+                  </Link>
+                </div>
 
-              <a
-                href={`https://wa.me/${COMPANY_INFO.whatsappPhone}?text=Hello%20Mayur,%20I%20need%20UN%20approved%20packaging%20/%20hazardous%20labels.`}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider px-5 py-3 flex items-center gap-2 transition-all"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp Mayur</span>
-              </a>
-            </div>
+                {/* Product Photo */}
+                <Link 
+                  href={`/products?category=${item.categoryId}`} 
+                  className="relative h-32 sm:h-36 overflow-hidden bg-slate-100 block border-b border-slate-200"
+                >
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {p.itemCode ? (
+                    <span className="absolute top-2 left-2 bg-slate-950 text-amber-400 font-mono font-bold text-[10px] px-2 py-0.5 shadow-xs">
+                      CODE: {p.itemCode}
+                    </span>
+                  ) : (
+                    <span className="absolute top-2 left-2 bg-emerald-700 text-white font-bold text-[10px] px-2 py-0.5 shadow-xs uppercase">
+                      UN CERTIFIED
+                    </span>
+                  )}
+                  <span className="absolute bottom-2 right-2 bg-slate-900/85 text-white text-[10px] font-semibold px-2 py-0.5">
+                    {p.capacity}
+                  </span>
+                </Link>
 
-          </div>
+                {/* Product Details & Actions */}
+                <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-bold text-xs sm:text-sm text-slate-950 uppercase line-clamp-2 leading-snug">
+                      <Link href={`/products?category=${item.categoryId}`} className="hover:text-amber-700 transition-colors">
+                        {p.name}
+                      </Link>
+                    </h3>
+                    <div className="text-[10px] text-slate-500 font-semibold mt-1">
+                      PG: {p.packingGroup}
+                    </div>
+                  </div>
 
+                  <div className="pt-3 mt-3 border-t border-slate-200 flex items-center justify-between">
+                    <div>
+                      <div className="text-[9px] text-slate-400 font-bold uppercase">Price:</div>
+                      <div className="text-xs sm:text-sm font-extrabold text-amber-600 font-mono">
+                        {p.priceDisplay}
+                      </div>
+                    </div>
+
+                    <a
+                      href={`https://wa.me/${COMPANY_INFO.whatsappPhone}?text=Hello%20Mayur,%20I%20want%20to%20inquire%20about%20${encodeURIComponent(p.name)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white p-1.5 sm:px-2.5 sm:py-1.5 text-[11px] font-bold uppercase transition-colors flex items-center gap-1 shadow-xs"
+                      title="Inquire on WhatsApp"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">Inquire</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Clean Class 1-9 Badge Strip */}
-        <div className="bg-slate-50 border border-slate-200 p-6">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 text-center sm:text-left">
-            Covering All 9 Hazardous Classes (IATA & IMDG):
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-            {HAZARDOUS_CLASSES.map((cls: HazardousClass, idx: number) => (
-              <div key={idx} className="bg-white border border-slate-200 p-2 text-center text-xs">
-                <div className="font-bold text-slate-950">{cls.class}</div>
-                <div className="text-[10px] text-slate-500 truncate">{cls.name}</div>
-              </div>
-            ))}
-            <div className="bg-amber-500 text-slate-950 font-bold p-2 text-center text-xs flex items-center justify-center">
-              All Classes Supplied
+        {/* View Full Catalog Link & Statutory Banner */}
+        <div className="bg-slate-950 text-white p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t-4 border-amber-500">
+          
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-xs">
+              <span className="text-amber-400 font-bold uppercase">Statutory Compliance:</span>
+              <span className="text-slate-300">GST: <strong>{COMPANY_INFO.gstNo}</strong></span>
+              <span className="text-slate-500">|</span>
+              <span className="text-slate-300">IEC: <strong>{COMPANY_INFO.iecCode}</strong></span>
+              <span className="text-slate-500">|</span>
+              <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5" /> TrustSEAL Verified
+              </span>
             </div>
+            <p className="text-[11px] text-slate-400">
+              Complete range: 4GV Boxes (X3 to X55), 30L-60L Drums, Jerry cans, Class 1-9 labels & absorbents.
+            </p>
           </div>
+
+          <Link
+            href="/products"
+            className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase px-5 py-3 flex items-center justify-center gap-2 transition-colors shrink-0"
+          >
+            <span>View Full Packaging Catalog (15+ Items)</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+
         </div>
 
       </div>

@@ -23,10 +23,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
 
   const navLinks = [
     { name: "Services", href: "/#services" },
-    { name: "UN Packaging", href: "/#hazmat" },
-    { name: "Mumbai Hub", href: "/#mumbai-gateway" },
-    { name: "About", href: "/#about" },
-    { name: "FAQs", href: "/#faq" },
+    { name: "UN Catalog", href: "/products" },
+    { name: "Operations", href: "/#about" },
+    { name: "FAQs", href: "/faq" },
     { name: "Contact", href: "/#contact" }
   ];
 
@@ -58,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
 
           <div className="flex items-center gap-4 text-xs">
             <a 
-              href={`tel:${COMPANY_INFO.phone}`} 
+              href={`tel:+91${COMPANY_INFO.phone}`} 
               className="flex items-center gap-1 font-bold text-white hover:text-amber-400 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-amber-400" />
@@ -185,10 +184,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
             </button>
 
             <a
-              href={`tel:${COMPANY_INFO.phone}`}
+              href={`tel:+91${COMPANY_INFO.phone}`}
               className="w-full bg-slate-900 text-white font-bold py-2.5 text-xs uppercase tracking-wider flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4 text-amber-400" /> Call {COMPANY_INFO.phone}
+              <Phone className="w-4 h-4 text-amber-400" /> Call {COMPANY_INFO.displayPhone}
             </a>
           </div>
         </div>
