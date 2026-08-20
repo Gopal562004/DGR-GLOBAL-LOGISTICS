@@ -50,10 +50,10 @@ export default function ProductsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs text-slate-500 mb-6">
+        <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">
           <Link href="/" className="hover:text-amber-600 flex items-center gap-1 font-semibold">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Home
           </Link>
@@ -61,28 +61,24 @@ export default function ProductsPage() {
           <span className="text-slate-900 font-bold">UN Packaging Catalog</span>
         </div>
 
-        {/* Page Header */}
-        <div className="border-b border-slate-200 pb-8 mb-10 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold px-3 py-1 uppercase tracking-widest">
-            <Box className="w-3.5 h-3.5 text-amber-700" /> Complete Certified Catalog
+        {/* Slim Compact Page Header */}
+        <div className="border-b border-slate-200 pb-4 mb-5 flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
+              UN APPROVED PACKAGING & DRUMS
+            </h1>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
-            UN APPROVED PACKAGING & DRUMS
-          </h1>
 
-          {/* Statutory Trust Badges */}
-          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-            <span className="bg-slate-100 border border-slate-300 px-3 py-1 font-bold text-slate-900">
-              GST No: <span className="font-mono text-amber-700">{COMPANY_INFO.gstNo}</span>
+          {/* Statutory Trust Badges (Compact) */}
+          <div className="flex flex-wrap items-center gap-2 text-[11px]">
+            <span className="bg-slate-100 border border-slate-300 px-2.5 py-0.5 font-bold text-slate-900">
+              GST: <span className="font-mono text-amber-700">{COMPANY_INFO.gstNo}</span>
             </span>
-            <span className="bg-slate-100 border border-slate-300 px-3 py-1 font-bold text-slate-900">
-              IEC Code: <span className="font-mono text-amber-700">{COMPANY_INFO.iecCode}</span>
+            <span className="bg-slate-100 border border-slate-300 px-2.5 py-0.5 font-bold text-slate-900">
+              IEC: <span className="font-mono text-amber-700">{COMPANY_INFO.iecCode}</span>
             </span>
-            <span className="bg-slate-100 border border-slate-300 px-3 py-1 font-bold text-slate-900">
-              Est. {COMPANY_INFO.establishedYear}
-            </span>
-            <span className="bg-emerald-100 border border-emerald-300 px-3 py-1 font-bold text-emerald-800 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" /> TrustSEAL Verified
+            <span className="bg-emerald-100 border border-emerald-300 px-2 py-0.5 font-bold text-emerald-800 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3" /> TrustSEAL
             </span>
           </div>
         </div>

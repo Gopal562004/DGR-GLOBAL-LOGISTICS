@@ -30,31 +30,43 @@ const CATEGORIES = [
   { 
     id: 'all', 
     label: 'All Packaging',
+    sub: 'Full Range',
+    icon: '📦',
     desc: 'Complete range of UN certified fiberboard boxes, open top HDPE drums, Jerry cans, hazardous labels, and chemical absorbents.'
   },
   { 
     id: 'un-boxes', 
-    label: 'UN 4GV Boxes (X3-X55)',
+    label: 'UN 4GV Boxes',
+    sub: 'X3 to X55',
+    icon: '📦',
     desc: 'Manufacturer of a wide range of UN certified fiberboard boxes: UN Mark 4GV X31, X55, X3, X6, X9, and X22 with IIP/IATA test certificates.'
   },
   { 
     id: 'hdpe-drums', 
-    label: 'HDPE Open Top Drums',
+    label: 'HDPE Drums',
+    sub: '30L to 60L',
+    icon: '🛢️',
     desc: 'Leading manufacturer of UN approved 30L, 35L, 60L, and 1H2/X60 open top HDPE drums for chemicals and hazardous transport.'
   },
   { 
     id: 'jerry-cans', 
-    label: 'UN Jerry Cans (3H1)',
+    label: 'UN Jerry Cans',
+    sub: '35L & 50L (3H1)',
+    icon: '🧴',
     desc: 'UN approved 35L (3H1/X35) and 50L narrow/wide mouth HDPE jerry cans tested for Packing Groups II and III.'
   },
   { 
     id: 'steel-drums', 
-    label: 'Steel & 220L Drums',
+    label: 'Steel & 220L',
+    sub: 'PG II & MS',
+    icon: '🛢️',
     desc: 'UN marked 220L PG II chemical storage drums and 10L-30L mild steel (MS / 1A1) drums.'
   },
   { 
     id: 'labels-absorbents', 
-    label: 'Hazard Labels & Absorbents',
+    label: 'Hazmat Labels',
+    sub: 'Class 1-9 & DG',
+    icon: '⚠️',
     desc: 'Self-adhesive weatherproof PVC Class 1 to 9 hazard diamond labels and Bio-Tech chemical absorbent powder bags.'
   },
 ];
@@ -116,56 +128,61 @@ Please share ready stock availability, dispatch timeline, and quotation in Mumba
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       
-      {/* Category Pills Bar */}
-      <div className="bg-slate-50 border border-slate-200 p-4 space-y-4">
+      {/* Ultra-Compact Category & Search Bar */}
+      <div className="bg-slate-50 border border-slate-200 p-3 sm:p-3.5 space-y-3 shadow-xs">
         
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-          {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-            {CATEGORIES.map((cat) => {
-              const isActive = selectedCategory === cat.id;
-              const href = cat.id === 'all' ? '/products' : `/products?category=${cat.id}`;
-              return (
-                <Link
-                  key={cat.id}
-                  href={href}
-                  scroll={false}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-3.5 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all border ${
-                    isActive
-                      ? 'bg-slate-900 text-amber-400 border-slate-900 shadow-sm'
-                      : 'bg-white text-slate-700 hover:text-slate-950 border-slate-300'
-                  }`}
-                >
-                  {cat.label}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Search Box */}
-          <div className="relative shrink-0 md:w-64">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+        {/* Search & Category Header Row */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
+          {/* Quick Search */}
+          <div className="relative flex-1">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search X3, X31, 35L, Drum..."
-              className="w-full bg-white border border-slate-300 pl-9 pr-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 rounded-none"
+              placeholder="Search by code (X3, X31) or capacity (35L, Drum)..."
+              className="w-full bg-white border border-slate-300 pl-8 pr-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 rounded-none shadow-xs"
             />
           </div>
-        </div>
 
-        {/* Category Description Banner */}
-        <div className="text-xs text-slate-600 bg-white border-l-4 border-amber-500 p-3 flex items-center justify-between gap-4">
-          <div>
-            <strong>{activeCategoryObj.label}:</strong> {activeCategoryObj.desc}
-          </div>
-          <span className="text-[11px] font-mono text-slate-400 shrink-0 font-bold">
+          <span className="text-[11px] font-mono text-amber-700 font-bold shrink-0 self-end sm:self-center">
             {filteredProducts.length} Items Listed
           </span>
+        </div>
+
+        {/* Slim, Compact Category Pills (Wraps naturally taking minimal vertical height) */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {CATEGORIES.map((cat) => {
+            const isActive = selectedCategory === cat.id;
+            const href = cat.id === 'all' ? '/products' : `/products?category=${cat.id}`;
+            const categoryCount = cat.id === 'all' 
+              ? products.length 
+              : products.filter(p => p.category === cat.id).length;
+
+            return (
+              <Link
+                key={cat.id}
+                href={href}
+                scroll={false}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider transition-all border flex items-center gap-1.5 ${
+                  isActive
+                    ? 'bg-slate-900 text-amber-400 border-slate-900 shadow-sm ring-1 ring-amber-400/50'
+                    : 'bg-white text-slate-700 hover:text-slate-950 border-slate-300 hover:border-slate-500'
+                }`}
+              >
+                <span>{cat.icon}</span>
+                <span>{cat.label}</span>
+                <span className={`text-[9px] font-mono px-1 py-0.2 rounded-xs font-bold ${
+                  isActive ? 'bg-amber-400 text-slate-950' : 'bg-slate-100 text-slate-500'
+                }`}>
+                  {categoryCount}
+                </span>
+              </Link>
+            );
+          })}
         </div>
 
       </div>

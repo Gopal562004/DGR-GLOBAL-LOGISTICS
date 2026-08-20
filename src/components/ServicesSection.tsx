@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Plane, 
@@ -61,9 +61,15 @@ const CATEGORIES = [
   }
 ];
 
+// 4-times duplicated array for seamless bidirectional infinite scrolling in both directions
+const LOOP_CATEGORIES = [...CATEGORIES, ...CATEGORIES, ...CATEGORIES, ...CATEGORIES];
+
 const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [showAllCards, setShowAllCards] = useState(false);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const isInteractingRef = useRef<boolean>(false);
+  const animFrameIdRef = useRef<number | null>(null);
 
   const selectedCategoryObj = CATEGORIES.find(c => c.id === activeCategory) || CATEGORIES[0];
   const allFilteredServices = SERVICES.filter(service => 
@@ -80,20 +86,91 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) =
     setShowAllCards(true);
   };
 
+  // Continuous gentle slow auto-scroll with seamless bidirectional infinite looping
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let resumeTimeout: NodeJS.Timeout;
+
+    // Center scroll position on middle duplicate set on mount
+    const singleSetWidth = scrollContainer.scrollWidth / 4;
+    if (scrollContainer.scrollLeft === 0 && singleSetWidth > 0) {
+      scrollContainer.scrollLeft = singleSetWidth;
+    }
+
+    const checkBidirectionalBoundary = () => {
+      const oneSet = scrollContainer.scrollWidth / 4;
+      if (oneSet <= 0) return;
+
+      // When user scrolls left (backward) near the start, jump forward by 2 sets
+      if (scrollContainer.scrollLeft <= 10) {
+        scrollContainer.scrollLeft += oneSet * 2;
+      } 
+      // When user scrolls right (forward) near the end, jump backward by 2 sets
+      else if (scrollContainer.scrollLeft >= oneSet * 3) {
+        scrollContainer.scrollLeft -= oneSet * 2;
+      }
+    };
+
+    const autoScroll = () => {
+      if (!isInteractingRef.current && scrollContainer) {
+        // Slow gentle speed (0.2px per frame)
+        scrollContainer.scrollLeft += 0.2;
+        checkBidirectionalBoundary();
+      }
+      animFrameIdRef.current = requestAnimationFrame(autoScroll);
+    };
+
+    animFrameIdRef.current = requestAnimationFrame(autoScroll);
+
+    const handleScroll = () => {
+      checkBidirectionalBoundary();
+    };
+
+    const handleUserStart = () => {
+      isInteractingRef.current = true;
+      clearTimeout(resumeTimeout);
+    };
+
+    const handleUserEnd = () => {
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isInteractingRef.current = false;
+      }, 2500); // Resume auto-glide 2.5s after user finishes swipe
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    scrollContainer.addEventListener('touchstart', handleUserStart, { passive: true });
+    scrollContainer.addEventListener('touchend', handleUserEnd, { passive: true });
+    scrollContainer.addEventListener('mouseenter', handleUserStart);
+    scrollContainer.addEventListener('mouseleave', handleUserEnd);
+
+    return () => {
+      if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
+      clearTimeout(resumeTimeout);
+      scrollContainer.removeEventListener('scroll', handleScroll);
+      scrollContainer.removeEventListener('touchstart', handleUserStart);
+      scrollContainer.removeEventListener('touchend', handleUserEnd);
+      scrollContainer.removeEventListener('mouseenter', handleUserStart);
+      scrollContainer.removeEventListener('mouseleave', handleUserEnd);
+    };
+  }, []);
+
   return (
     <section id="services" className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Clean, Minimalist Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-3">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
             OUR CORE CAPABILITIES
           </h2>
           <div className="w-12 h-1 bg-amber-500 mx-auto"></div>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex items-center justify-center gap-2 mb-10 overflow-x-auto pb-2 scrollbar-none">
+        {/* Desktop View: Centered Filter Pills */}
+        <div className="hidden sm:flex items-center justify-center gap-2 mb-10">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -110,6 +187,35 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenQuoteModal }) =
               </button>
             );
           })}
+        </div>
+
+        {/* Mobile View: Infinite Auto-Glide Ticker with Bidirectional Manual Swipe */}
+        <div className="sm:hidden mb-8 relative">
+          <div
+            ref={scrollRef}
+            className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none touch-pan-x cursor-grab active:cursor-grabbing select-none"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {LOOP_CATEGORIES.map((cat, idx) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={`${cat.id}-${idx}`}
+                  onClick={() => handleCategoryChange(cat.id)}
+                  className={`px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap shrink-0 border ${
+                    isActive
+                      ? 'bg-slate-900 text-amber-400 border-slate-900 shadow-sm ring-2 ring-amber-400/50'
+                      : 'bg-white text-slate-700 border-slate-300 active:bg-slate-200'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+          {/* Subtle side fade indicators for mobile scrolling cue */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-slate-50 to-transparent"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-4 bg-gradient-to-l from-slate-50 to-transparent"></div>
         </div>
 
         {/* Airy, High-Contrast Services Grid */}
