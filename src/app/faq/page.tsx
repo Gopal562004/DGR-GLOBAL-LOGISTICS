@@ -42,20 +42,17 @@ export default function FAQPage() {
         </div>
 
         {/* Header */}
-        <div className="border-b border-slate-200 pb-8 mb-10">
+        <div className="border-b border-slate-200 pb-8 mb-12">
           <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-bold px-3 py-1 uppercase tracking-widest mb-3">
             <HelpCircle className="w-3.5 h-3.5 text-amber-700" /> Knowledge & Guidelines
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
             FREQUENTLY ASKED QUESTIONS
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 mt-2">
-            Detailed guidance on international freight forwarding, customs clearance at Mumbai Sahar & JNPT, and UN certified packaging rules.
-          </p>
         </div>
 
         {/* FAQ List */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           {FAQ_ITEMS.map((faq, idx) => (
             <div 
               key={idx} 

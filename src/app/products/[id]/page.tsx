@@ -233,9 +233,6 @@ export default async function SingleProductPage({ params }: ProductPageProps) {
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-slate-950 uppercase leading-tight">
                 {product.name}
               </h1>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Heavy-duty UN certified container engineered for safe domestic and international transport of hazardous goods and chemicals.
-              </p>
             </div>
 
             {/* Price Box */}
