@@ -41,20 +41,17 @@ const ContactSection: React.FC = () => {
     <section id="contact" className="py-16 sm:py-20 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+        {/* Clean Minimalist Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-3">
           <div className="flex items-center justify-center gap-2">
-            <span className="text-xs font-extrabold tracking-widest text-amber-600 uppercase">
+            <span className="text-[11px] font-extrabold tracking-widest text-amber-600 uppercase">
               REACH OUR DESK
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
             CONTACT & MUMBAI LOCATION
           </h2>
-          <div className="w-16 h-1 bg-amber-500 mx-auto"></div>
-          <p className="text-sm sm:text-base text-slate-600">
-            Get in touch with Operations Lead <strong className="text-slate-900">{COMPANY_INFO.contactPerson}</strong> for instant freight quotation and shipment handovers.
-          </p>
+          <div className="w-12 h-1 bg-amber-500 mx-auto"></div>
         </div>
 
         {/* 2-Column Clean Layout */}

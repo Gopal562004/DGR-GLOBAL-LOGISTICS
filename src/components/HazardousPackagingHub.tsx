@@ -40,21 +40,18 @@ const CATEGORY_SHOWCASE = [
 
 const HazardousPackagingHub: React.FC<HazardousPackagingHubProps> = ({ onOpenQuoteModal }) => {
   return (
-    <section id="hazmat" className="py-14 sm:py-18 bg-white border-b border-slate-200">
+    <section id="hazmat" className="py-16 sm:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 space-y-2">
-          <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-300 text-xs font-bold px-3 py-1 uppercase tracking-widest">
-            <ShieldAlert className="w-3.5 h-3.5 text-amber-600" /> Manufacturer & Supplier in Mumbai
+        {/* Clean Minimalist Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+          <div className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-900 border border-amber-300 text-[11px] font-bold px-3 py-1 uppercase tracking-widest">
+            <ShieldAlert className="w-3.5 h-3.5 text-amber-600" /> Direct Manufacturer in Mumbai
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-slate-950 uppercase tracking-tight">
             UN CERTIFIED PACKAGING & DRUMS
           </h2>
           <div className="w-12 h-1 bg-amber-500 mx-auto"></div>
-          <p className="text-xs sm:text-sm text-slate-600">
-            Factory rates for UN 4GV fiberboard boxes, open-top HDPE drums, Jerry cans, and Class 1-9 hazard labels.
-          </p>
         </div>
 
         {/* 4 Category-Diverse Real-Product Cards with Category Badges and Direct Links to /products */}
