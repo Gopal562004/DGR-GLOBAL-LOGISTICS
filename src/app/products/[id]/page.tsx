@@ -19,6 +19,7 @@ import {
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
+import ProductImageGallery from '@/components/ProductImageGallery';
 import { COMPANY_INFO, UN_PRODUCTS, UNProduct } from '@/data/logisticsData';
 
 interface ProductPageProps {
@@ -177,35 +178,14 @@ export default async function SingleProductPage({ params }: ProductPageProps) {
         {/* Main Product Showcase Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left: Product Image & Gallery */}
+          {/* Left: Product Image & Gallery with Interactive Angles */}
           <div className="lg:col-span-6 space-y-4">
-            <div className="border-2 border-slate-900 overflow-hidden bg-slate-100 shadow-md relative group">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-80 sm:h-96 object-cover"
-              />
-              {product.itemCode && (
-                <div className="absolute top-3 left-3 bg-slate-950 text-amber-400 font-mono font-extrabold text-sm px-3 py-1 border border-slate-700">
-                  CODE: {product.itemCode}
-                </div>
-              )}
-              <div className="absolute top-3 right-3 bg-emerald-600 text-white font-extrabold text-xs px-2.5 py-1 uppercase tracking-wider">
-                UN Certified
-              </div>
-            </div>
-
-            {/* Gallery Thumbnails */}
-            {product.galleryImages && product.galleryImages.length > 1 && (
-              <div className="flex items-center gap-3">
-                <span className="text-[11px] font-bold uppercase text-slate-500">Angles:</span>
-                {product.galleryImages.map((img, idx) => (
-                  <div key={idx} className="w-16 h-14 border border-slate-300 overflow-hidden shadow-xs">
-                    <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-            )}
+            <ProductImageGallery
+              mainImage={product.image}
+              galleryImages={product.galleryImages}
+              productName={product.name}
+              itemCode={product.itemCode}
+            />
 
             {/* Statutory Compliance Bar */}
             <div className="bg-slate-50 border border-slate-200 p-4 text-xs space-y-1.5">
